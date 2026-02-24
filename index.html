@@ -1,0 +1,3060 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#1c8eeb" />
+        <meta
+            name="description"
+            content="Assistive Communication Aid - experimental AAC application for people with speech impairments"
+        />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iNTEyIgogICBoZWlnaHQ9IjUxMiIKICAgdmlld0JveD0iMCAwIDEzNS40NjY2NiAxMzUuNDY2NjciCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZzEiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnMKICAgICBpZD0iZGVmczEiIC8+CiAgPGcKICAgICBpZD0ibGF5ZXIxIj4KICAgIDxyZWN0CiAgICAgICBzdHlsZT0iZmlsbDojOGFjZmRlO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojMWQyMDIxO3N0cm9rZS13aWR0aDowLjQ5OTk5OTtwYWludC1vcmRlcjpzdHJva2UgbWFya2VycyBmaWxsIgogICAgICAgaWQ9InJlY3QxIgogICAgICAgd2lkdGg9IjEzNS40NjY2NiIKICAgICAgIGhlaWdodD0iMTM1LjQ2NjY2IgogICAgICAgeD0iMCIKICAgICAgIHk9IjAiIC8+CiAgICA8cmVjdAogICAgICAgc3R5bGU9ImZvbnQtdmFyaWF0aW9uLXNldHRpbmdzOm5vcm1hbDtvcGFjaXR5OjE7dmVjdG9yLWVmZmVjdDpub25lO2ZpbGw6IzMzNjY3MztmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MC40NTA0ODU7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLWRhc2hvZmZzZXQ6MDtzdHJva2Utb3BhY2l0eToxOy1pbmtzY2FwZS1zdHJva2U6bm9uZTtwYWludC1vcmRlcjpzdHJva2UgbWFya2VycyBmaWxsO3N0b3AtY29sb3I6IzAwMDAwMDtzdG9wLW9wYWNpdHk6MSIKICAgICAgIGlkPSJyZWN0MiIKICAgICAgIHdpZHRoPSIxMDYuMTg4OTMiCiAgICAgICBoZWlnaHQ9IjcxLjQ0Mzc0OCIKICAgICAgIHg9IjE0LjczMDA1MSIKICAgICAgIHk9IjIwLjQ0MTU4OSIKICAgICAgIHJ5PSIxMS40MjMwNzciIC8+CiAgICA8cGF0aAogICAgICAgaWQ9InJlY3QyLTEiCiAgICAgICBzdHlsZT0iZmlsbDojZjVmNWUxO3N0cm9rZS13aWR0aDowLjQ1MDQ4NTtwYWludC1vcmRlcjpzdHJva2UgbWFya2VycyBmaWxsIgogICAgICAgZD0ibSAyNi4xNTIzNDQsMjguNjQ4NDM3IGMgLTEuOTIyNjgyLDAgLTMuMjE0ODQ0LDEuMjkyNDI4IC0zLjIxNDg0NCwzLjIxNjc5NyB2IDQ4LjU5NzY1NyBjIDAsMS45MjQzNjkgMS4yOTA0NzQsMy4yMTQ4NDMgMy4yMTQ4NDQsMy4yMTQ4NDMgaCA4My4zNDM3NDYgYyAxLjkyNDM4LDAgMy4yMTY4LC0xLjI5MjE2IDMuMjE2OCwtMy4yMTQ4NDMgViAzMS44NjUyMzQgYyAwLC0xLjkyMjY4MyAtMS4yOTQxMSwtMy4yMTY3OTcgLTMuMjE2OCwtMy4yMTY3OTcgeiIgLz4KICAgIDxwYXRoCiAgICAgICBpZD0icmVjdDMiCiAgICAgICBzdHlsZT0iZmlsbDojMzM2NjczO3N0cm9rZS13aWR0aDowLjkyMDY1NztwYWludC1vcmRlcjpzdHJva2UgbWFya2VycyBmaWxsIgogICAgICAgZD0ibSAyOC44MTcxMzcsODMuNjc3NzM0IGggMzAuNjczODg1IGwgMy41OTc2MTUsMzEuNzc3NTY2IGEgMS42NDczNDAxLDEuNjQ3MzQwMSAwIDAgMSAtMi44MzEyNDYsMS4zMTk4NyB6IiAvPgogICAgPHBhdGgKICAgICAgIHN0eWxlPSJmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZTo1OS43NTE0cHg7bGluZS1oZWlnaHQ6MS41O2ZvbnQtZmFtaWx5Ok1vbnRzZXJyYXQ7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjonTW9udHNlcnJhdCBCb2xkJztsZXR0ZXItc3BhY2luZzowcHg7d29yZC1zcGFjaW5nOjBweDtmaWxsOiMzOGIyY2U7c3Ryb2tlLXdpZHRoOjIuMTgwMDI7cGFpbnQtb3JkZXI6c3Ryb2tlIG1hcmtlcnMgZmlsbCIKICAgICAgIGQ9Ik0gNzcuNDE0NjAxLDY4LjExMzcxNCBIIDU3Ljk5NTM5NiBsIC0zLjcwNDU4Nyw4Ljk2MjcxIGggLTkuOTE4NzMyIGwgMTguNjQyNDM3LC00MS44MjU5OCBoIDkuNTYwMjI0IGwgMTguNzAyMTg4LDQxLjgyNTk4IEggODEuMTE5MTg4IFogTSA3NC4zNjcyOCw2MC43NjQyOTEgNjcuNzM0ODc0LDQ0Ljc1MDkxNiA2MS4xMDI0NjksNjAuNzY0MjkxIFoiCiAgICAgICBpZD0idGV4dDMiCiAgICAgICBhcmlhLWxhYmVsPSJBIiAvPgogIDwvZz4KPC9zdmc+Cg=="
+        />
+        <link
+            rel="manifest"
+            href="data:application/json;base64,eyJuYW1lIjoiVm94RWFzZSBDb21tdW5pY2F0aW9uIEFpZCIsInNob3J0X25hbWUiOiJWb3hFYXNlIiwiZGVzY3JpcHRpb24iOiJBc3Npc3RpdmUgQ29tbXVuaWNhdGlvbiBBaWQiLCJzdGFydF91cmwiOiIuLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiNmNWY1ZjUiLCJ0aGVtZV9jb2xvciI6IiMyMTk2RjMiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQRDk0Yld3Z2RtVnljMmx2YmowaU1TNHdJaUJsYm1OdlpHbHVaejBpVlZSR0xUZ2lJSE4wWVc1a1lXeHZibVU5SW01dklqOCtDandoTFMwZ1EzSmxZWFJsWkNCM2FYUm9JRWx1YTNOallYQmxJQ2hvZEhSd09pOHZkM2QzTG1sdWEzTmpZWEJsTG05eVp5OHBJQzB0UGdvS1BITjJad29nSUNCM2FXUjBhRDBpTlRFeUlnb2dJQ0JvWldsbmFIUTlJalV4TWlJS0lDQWdkbWxsZDBKdmVEMGlNQ0F3SURFek5TNDBOalkyTmlBeE16VXVORFkyTmpjaUNpQWdJSFpsY25OcGIyNDlJakV1TVNJS0lDQWdhV1E5SW5OMlp6RWlDaUFnSUhodGJHNXpQU0pvZEhSd09pOHZkM2QzTG5jekxtOXlaeTh5TURBd0wzTjJaeUlLSUNBZ2VHMXNibk02YzNablBTSm9kSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SStDaUFnUEdSbFpuTUtJQ0FnSUNCcFpEMGlaR1ZtY3pFaUlDOCtDaUFnUEdjS0lDQWdJQ0JwWkQwaWJHRjVaWEl4SWo0S0lDQWdJRHh5WldOMENpQWdJQ0FnSUNCemRIbHNaVDBpWm1sc2JEb2pPR0ZqWm1SbE8yWnBiR3d0YjNCaFkybDBlVG94TzNOMGNtOXJaVG9qTVdReU1ESXhPM04wY205clpTMTNhV1IwYURvd0xqUTVPVGs1T1R0d1lXbHVkQzF2Y21SbGNqcHpkSEp2YTJVZ2JXRnlhMlZ5Y3lCbWFXeHNJZ29nSUNBZ0lDQWdhV1E5SW5KbFkzUXhJZ29nSUNBZ0lDQWdkMmxrZEdnOUlqRXpOUzQwTmpZMk5pSUtJQ0FnSUNBZ0lHaGxhV2RvZEQwaU1UTTFMalEyTmpZMklnb2dJQ0FnSUNBZ2VEMGlNQ0lLSUNBZ0lDQWdJSGs5SWpBaUlDOCtDaUFnSUNBOGNtVmpkQW9nSUNBZ0lDQWdjM1I1YkdVOUltWnZiblF0ZG1GeWFXRjBhVzl1TFhObGRIUnBibWR6T201dmNtMWhiRHR2Y0dGamFYUjVPakU3ZG1WamRHOXlMV1ZtWm1WamREcHViMjVsTzJacGJHdzZJek16TmpZM016dG1hV3hzTFc5d1lXTnBkSGs2TVR0emRISnZhMlU2Ym05dVpUdHpkSEp2YTJVdGQybGtkR2c2TUM0ME5UQTBPRFU3YzNSeWIydGxMV3hwYm1WallYQTZZblYwZER0emRISnZhMlV0YkdsdVpXcHZhVzQ2YldsMFpYSTdjM1J5YjJ0bExXMXBkR1Z5YkdsdGFYUTZORHR6ZEhKdmEyVXRaR0Z6YUdGeWNtRjVPbTV2Ym1VN2MzUnliMnRsTFdSaGMyaHZabVp6WlhRNk1EdHpkSEp2YTJVdGIzQmhZMmwwZVRveE95MXBibXR6WTJGd1pTMXpkSEp2YTJVNmJtOXVaVHR3WVdsdWRDMXZjbVJsY2pwemRISnZhMlVnYldGeWEyVnljeUJtYVd4c08zTjBiM0F0WTI5c2IzSTZJekF3TURBd01EdHpkRzl3TFc5d1lXTnBkSGs2TVNJS0lDQWdJQ0FnSUdsa1BTSnlaV04wTWlJS0lDQWdJQ0FnSUhkcFpIUm9QU0l4TURZdU1UZzRPVE1pQ2lBZ0lDQWdJQ0JvWldsbmFIUTlJamN4TGpRME16YzBPQ0lLSUNBZ0lDQWdJSGc5SWpFMExqY3pNREExTVNJS0lDQWdJQ0FnSUhrOUlqSXdMalEwTVRVNE9TSUtJQ0FnSUNBZ0lISjVQU0l4TVM0ME1qTXdOemNpSUM4K0NpQWdJQ0E4Y0dGMGFBb2dJQ0FnSUNBZ2FXUTlJbkpsWTNReUxURWlDaUFnSUNBZ0lDQnpkSGxzWlQwaVptbHNiRG9qWmpWbU5XVXhPM04wY205clpTMTNhV1IwYURvd0xqUTFNRFE0TlR0d1lXbHVkQzF2Y21SbGNqcHpkSEp2YTJVZ2JXRnlhMlZ5Y3lCbWFXeHNJZ29nSUNBZ0lDQWdaRDBpYlNBeU5pNHhOVEl6TkRRc01qZ3VOalE0TkRNM0lHTWdMVEV1T1RJeU5qZ3lMREFnTFRNdU1qRTBPRFEwTERFdU1qa3lOREk0SUMwekxqSXhORGcwTkN3ekxqSXhOamM1TnlCMklEUTRMalU1TnpZMU55QmpJREFzTVM0NU1qUXpOamtnTVM0eU9UQTBOelFzTXk0eU1UUTRORE1nTXk0eU1UUTRORFFzTXk0eU1UUTRORE1nYUNBNE15NHpORE0zTkRZZ1l5QXhMamt5TkRNNExEQWdNeTR5TVRZNExDMHhMakk1TWpFMklETXVNakUyT0N3dE15NHlNVFE0TkRNZ1ZpQXpNUzQ0TmpVeU16UWdZeUF3TEMweExqa3lNalk0TXlBdE1TNHlPVFF4TVN3dE15NHlNVFkzT1RjZ0xUTXVNakUyT0N3dE15NHlNVFkzT1RjZ2VpSWdMejRLSUNBZ0lEeHdZWFJvQ2lBZ0lDQWdJQ0JwWkQwaWNtVmpkRE1pQ2lBZ0lDQWdJQ0J6ZEhsc1pUMGlabWxzYkRvak16TTJOamN6TzNOMGNtOXJaUzEzYVdSMGFEb3dMamt5TURZMU56dHdZV2x1ZEMxdmNtUmxjanB6ZEhKdmEyVWdiV0Z5YTJWeWN5Qm1hV3hzSWdvZ0lDQWdJQ0FnWkQwaWJTQXlPQzQ0TVRjeE16Y3NPRE11TmpjM056TTBJR2dnTXpBdU5qY3pPRGcxSUd3Z015NDFPVGMyTVRVc016RXVOemMzTlRZMklHRWdNUzQyTkRjek5EQXhMREV1TmpRM016UXdNU0F3SURBZ01TQXRNaTQ0TXpFeU5EWXNNUzR6TVRrNE55QjZJaUF2UGdvZ0lDQWdQSEJoZEdnS0lDQWdJQ0FnSUhOMGVXeGxQU0ptYjI1MExYZGxhV2RvZERwaWIyeGtPMlp2Ym5RdGMybDZaVG8xT1M0M05URTBjSGc3YkdsdVpTMW9aV2xuYUhRNk1TNDFPMlp2Ym5RdFptRnRhV3g1T2sxdmJuUnpaWEp5WVhRN0xXbHVhM05qWVhCbExXWnZiblF0YzNCbFkybG1hV05oZEdsdmJqb25UVzl1ZEhObGNuSmhkQ0JDYjJ4a0p6dHNaWFIwWlhJdGMzQmhZMmx1Wnpvd2NIZzdkMjl5WkMxemNHRmphVzVuT2pCd2VEdG1hV3hzT2lNek9HSXlZMlU3YzNSeWIydGxMWGRwWkhSb09qSXVNVGd3TURJN2NHRnBiblF0YjNKa1pYSTZjM1J5YjJ0bElHMWhjbXRsY25NZ1ptbHNiQ0lLSUNBZ0lDQWdJR1E5SWswZ056Y3VOREUwTmpBeExEWTRMakV4TXpjeE5DQklJRFUzTGprNU5UTTVOaUJzSUMwekxqY3dORFU0Tnl3NExqazJNamN4SUdnZ0xUa3VPVEU0TnpNeUlHd2dNVGd1TmpReU5ETTNMQzAwTVM0NE1qVTVPQ0JvSURrdU5UWXdNakkwSUd3Z01UZ3VOekF5TVRnNExEUXhMamd5TlRrNElFZ2dPREV1TVRFNU1UZzRJRm9nVFNBM05DNHpOamN5T0N3Mk1DNDNOalF5T1RFZ05qY3VOek0wT0RjMExEUTBMamMxTURreE5pQTJNUzR4TURJME5qa3NOakF1TnpZME1qa3hJRm9pQ2lBZ0lDQWdJQ0JwWkQwaWRHVjRkRE1pQ2lBZ0lDQWdJQ0JoY21saExXeGhZbVZzUFNKQklpQXZQZ29nSUR3dlp6NEtQQzl6ZG1jK0NnPT0iLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9LHsic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQRDk0Yld3Z2RtVnljMmx2YmowaU1TNHdJaUJsYm1OdlpHbHVaejBpVlZSR0xUZ2lJSE4wWVc1a1lXeHZibVU5SW01dklqOCtDandoTFMwZ1EzSmxZWFJsWkNCM2FYUm9JRWx1YTNOallYQmxJQ2hvZEhSd09pOHZkM2QzTG1sdWEzTmpZWEJsTG05eVp5OHBJQzB0UGdvS1BITjJad29nSUNCM2FXUjBhRDBpTlRFeUlnb2dJQ0JvWldsbmFIUTlJalV4TWlJS0lDQWdkbWxsZDBKdmVEMGlNQ0F3SURFek5TNDBOalkyTmlBeE16VXVORFkyTmpjaUNpQWdJSFpsY25OcGIyNDlJakV1TVNJS0lDQWdhV1E5SW5OMlp6RWlDaUFnSUhodGJHNXpQU0pvZEhSd09pOHZkM2QzTG5jekxtOXlaeTh5TURBd0wzTjJaeUlLSUNBZ2VHMXNibk02YzNablBTSm9kSFJ3T2k4dmQzZDNMbmN6TG05eVp5OHlNREF3TDNOMlp5SStDaUFnUEdSbFpuTUtJQ0FnSUNCcFpEMGlaR1ZtY3pFaUlDOCtDaUFnUEdjS0lDQWdJQ0JwWkQwaWJHRjVaWEl4SWo0S0lDQWdJRHh5WldOMENpQWdJQ0FnSUNCemRIbHNaVDBpWm1sc2JEb2pPR0ZqWm1SbE8yWnBiR3d0YjNCaFkybDBlVG94TzNOMGNtOXJaVG9qTVdReU1ESXhPM04wY205clpTMTNhV1IwYURvd0xqUTVPVGs1T1R0d1lXbHVkQzF2Y21SbGNqcHpkSEp2YTJVZ2JXRnlhMlZ5Y3lCbWFXeHNJZ29nSUNBZ0lDQWdhV1E5SW5KbFkzUXhJZ29nSUNBZ0lDQWdkMmxrZEdnOUlqRXpOUzQwTmpZMk5pSUtJQ0FnSUNBZ0lHaGxhV2RvZEQwaU1UTTFMalEyTmpZMklnb2dJQ0FnSUNBZ2VEMGlNQ0lLSUNBZ0lDQWdJSGs5SWpBaUlDOCtDaUFnSUNBOGNtVmpkQW9nSUNBZ0lDQWdjM1I1YkdVOUltWnZiblF0ZG1GeWFXRjBhVzl1TFhObGRIUnBibWR6T201dmNtMWhiRHR2Y0dGamFYUjVPakU3ZG1WamRHOXlMV1ZtWm1WamREcHViMjVsTzJacGJHdzZJek16TmpZM016dG1hV3hzTFc5d1lXTnBkSGs2TVR0emRISnZhMlU2Ym05dVpUdHpkSEp2YTJVdGQybGtkR2c2TUM0ME5UQTBPRFU3YzNSeWIydGxMV3hwYm1WallYQTZZblYwZER0emRISnZhMlV0YkdsdVpXcHZhVzQ2YldsMFpYSTdjM1J5YjJ0bExXMXBkR1Z5YkdsdGFYUTZORHR6ZEhKdmEyVXRaR0Z6YUdGeWNtRjVPbTV2Ym1VN2MzUnliMnRsTFdSaGMyaHZabVp6WlhRNk1EdHpkSEp2YTJVdGIzQmhZMmwwZVRveE95MXBibXR6WTJGd1pTMXpkSEp2YTJVNmJtOXVaVHR3WVdsdWRDMXZjbVJsY2pwemRISnZhMlVnYldGeWEyVnljeUJtYVd4c08zTjBiM0F0WTI5c2IzSTZJekF3TURBd01EdHpkRzl3TFc5d1lXTnBkSGs2TVNJS0lDQWdJQ0FnSUdsa1BTSnlaV04wTWlJS0lDQWdJQ0FnSUhkcFpIUm9QU0l4TURZdU1UZzRPVE1pQ2lBZ0lDQWdJQ0JvWldsbmFIUTlJamN4TGpRME16YzBPQ0lLSUNBZ0lDQWdJSGc5SWpFMExqY3pNREExTVNJS0lDQWdJQ0FnSUhrOUlqSXdMalEwTVRVNE9TSUtJQ0FnSUNBZ0lISjVQU0l4TVM0ME1qTXdOemNpSUM4K0NpQWdJQ0E4Y0dGMGFBb2dJQ0FnSUNBZ2FXUTlJbkpsWTNReUxURWlDaUFnSUNBZ0lDQnpkSGxzWlQwaVptbHNiRG9qWmpWbU5XVXhPM04wY205clpTMTNhV1IwYURvd0xqUTFNRFE0TlR0d1lXbHVkQzF2Y21SbGNqcHpkSEp2YTJVZ2JXRnlhMlZ5Y3lCbWFXeHNJZ29nSUNBZ0lDQWdaRDBpYlNBeU5pNHhOVEl6TkRRc01qZ3VOalE0TkRNM0lHTWdMVEV1T1RJeU5qZ3lMREFnTFRNdU1qRTBPRFEwTERFdU1qa3lOREk0SUMwekxqSXhORGcwTkN3ekxqSXhOamM1TnlCMklEUTRMalU1TnpZMU55QmpJREFzTVM0NU1qUXpOamtnTVM0eU9UQTBOelFzTXk0eU1UUTRORE1nTXk0eU1UUTRORFFzTXk0eU1UUTRORE1nYUNBNE15NHpORE0zTkRZZ1l5QXhMamt5TkRNNExEQWdNeTR5TVRZNExDMHhMakk1TWpFMklETXVNakUyT0N3dE15NHlNVFE0TkRNZ1ZpQXpNUzQ0TmpVeU16UWdZeUF3TEMweExqa3lNalk0TXlBdE1TNHlPVFF4TVN3dE15NHlNVFkzT1RjZ0xUTXVNakUyT0N3dE15NHlNVFkzT1RjZ2VpSWdMejRLSUNBZ0lEeHdZWFJvQ2lBZ0lDQWdJQ0JwWkQwaWNtVmpkRE1pQ2lBZ0lDQWdJQ0J6ZEhsc1pUMGlabWxzYkRvak16TTJOamN6TzNOMGNtOXJaUzEzYVdSMGFEb3dMamt5TURZMU56dHdZV2x1ZEMxdmNtUmxjanB6ZEhKdmEyVWdiV0Z5YTJWeWN5Qm1hV3hzSWdvZ0lDQWdJQ0FnWkQwaWJTQXlPQzQ0TVRjeE16Y3NPRE11TmpjM056TTBJR2dnTXpBdU5qY3pPRGcxSUd3Z015NDFPVGMyTVRVc016RXVOemMzTlRZMklHRWdNUzQyTkRjek5EQXhMREV1TmpRM016UXdNU0F3SURBZ01TQXRNaTQ0TXpFeU5EWXNNUzR6TVRrNE55QjZJaUF2UGdvZ0lDQWdQSEJoZEdnS0lDQWdJQ0FnSUhOMGVXeGxQU0ptYjI1MExYZGxhV2RvZERwaWIyeGtPMlp2Ym5RdGMybDZaVG8xT1M0M05URTBjSGc3YkdsdVpTMW9aV2xuYUhRNk1TNDFPMlp2Ym5RdFptRnRhV3g1T2sxdmJuUnpaWEp5WVhRN0xXbHVhM05qWVhCbExXWnZiblF0YzNCbFkybG1hV05oZEdsdmJqb25UVzl1ZEhObGNuSmhkQ0JDYjJ4a0p6dHNaWFIwWlhJdGMzQmhZMmx1Wnpvd2NIZzdkMjl5WkMxemNHRmphVzVuT2pCd2VEdG1hV3hzT2lNek9HSXlZMlU3YzNSeWIydGxMWGRwWkhSb09qSXVNVGd3TURJN2NHRnBiblF0YjNKa1pYSTZjM1J5YjJ0bElHMWhjbXRsY25NZ1ptbHNiQ0lLSUNBZ0lDQWdJR1E5SWswZ056Y3VOREUwTmpBeExEWTRMakV4TXpjeE5DQklJRFUzTGprNU5UTTVOaUJzSUMwekxqY3dORFU0Tnl3NExqazJNamN4SUdnZ0xUa3VPVEU0TnpNeUlHd2dNVGd1TmpReU5ETTNMQzAwTVM0NE1qVTVPQ0JvSURrdU5UWXdNakkwSUd3Z01UZ3VOekF5TVRnNExEUXhMamd5TlRrNElFZ2dPREV1TVRFNU1UZzRJRm9nVFNBM05DNHpOamN5T0N3Mk1DNDNOalF5T1RFZ05qY3VOek0wT0RjMExEUTBMamMxTURreE5pQTJNUzR4TURJME5qa3NOakF1TnpZME1qa3hJRm9pQ2lBZ0lDQWdJQ0JwWkQwaWRHVjRkRE1pQ2lBZ0lDQWdJQ0JoY21saExXeGhZbVZzUFNKQklpQXZQZ29nSUR3dlp6NEtQQzl6ZG1jK0NnPT0iLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9XX0="
+        />
+        <title>VoxEase Communication Aid</title>
+        <!-- v1.0.0 2026.02.24 -->
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                background: #f5f5f5;
+                color: #333;
+                overflow: clip;
+                height: 100vh;
+                max-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            body.dark {
+                background: #1a1a1a;
+                color: #e0e0e0;
+            }
+
+            #output-banner {
+                flex-shrink: 0;
+                background: #1c8eeb;
+                color: white;
+                padding: 30px;
+                text-align: center;
+                font-size: 48px;
+                font-weight: bold;
+                min-height: 120px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            body.dark #output-banner {
+                background: #1c8eeb;
+            }
+
+            #controls {
+                flex-shrink: 0;
+                padding: 15px;
+                background: white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            body.dark #controls {
+                background: #2a2a2a;
+            }
+
+            .btn {
+                padding: 10px 24px;
+                font-size: 18px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                background: #399c3c;
+                color: white;
+                transition: all 0.2s;
+                min-width: 44px;
+                min-height: 40px;
+            }
+
+            .btn:hover {
+                background: #2b752d;
+                transform: scale(1.05);
+            }
+
+            .btn.secondary {
+                background: #767676;
+            }
+
+            .btn.secondary:hover {
+                background: #606060;
+            }
+
+            #grid-container {
+                flex: 1;
+                min-height: 0;
+                overflow-y: auto;
+                padding: 20px;
+            }
+
+            #phrase-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            #phrase-grid.list-mode {
+                grid-template-columns: 1fr;
+                max-width: 800px;
+            }
+
+            .phrase-item {
+                background: white;
+                padding: 25px;
+                border-radius: 8px;
+                font-size: 24px;
+                text-align: center;
+                cursor: pointer;
+                border: 3px solid transparent;
+                transition: all 0.2s;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                min-height: 80px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                min-width: 44px;
+            }
+
+            .phrase-item .phrase-icon {
+                font-size: 32px;
+            }
+
+            .phrase-item .phrase-text {
+                word-wrap: break-word;
+            }
+
+            .phrase-item.special {
+                background: #e8f5e9;
+                font-style: italic;
+            }
+
+            body.dark .phrase-item.special {
+                background: #399c3c;
+            }
+
+            body.dark .phrase-item {
+                background: #2a2a2a;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+
+            .phrase-item:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .phrase-item.selected {
+                border-color: #1c8eeb;
+                background: #e3f2fd;
+            }
+
+            body.dark .phrase-item.selected {
+                background: #10519c;
+                border-color: #1c8eeb;
+            }
+
+            .phrase-item.hovering {
+                background: #fff9c4;
+                border-color: #ffc107;
+            }
+
+            body.dark .phrase-item.hovering {
+                background: #f57c00;
+            }
+
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1000;
+                overflow-y: auto;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .modal.active {
+                display: flex;
+            }
+
+            .modal-content {
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                max-width: 600px;
+                width: 90%;
+                max-height: 90vh;
+                overflow-y: auto;
+                position: relative;
+            }
+
+            body.dark .modal-content {
+                background: #2a2a2a;
+            }
+
+            .modal-close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: #666;
+                padding: 5px 10px;
+                line-height: 1;
+            }
+
+            .modal-close:hover {
+                color: #333;
+            }
+
+            body.dark .modal-close {
+                color: #aaa;
+            }
+
+            body.dark .modal-close:hover {
+                color: #fff;
+            }
+
+            .setting-group {
+                margin-bottom: 25px;
+            }
+
+            .setting-group h3 {
+                margin-bottom: 12px;
+                color: #1c8eeb;
+            }
+
+            .setting-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            body.dark .setting-item {
+                border-bottom-color: #444;
+            }
+
+            .tts-warning {
+                background: #fff3cd;
+                border: 1px solid #ffc107;
+                color: #856404;
+                padding: 10px 12px;
+                border-radius: 6px;
+                margin-bottom: 12px;
+                font-size: 14px;
+            }
+
+            body.dark .tts-warning {
+                background: #3d3200;
+                border-color: #665200;
+                color: #ffc107;
+            }
+
+            .setting-item label {
+                font-size: 16px;
+            }
+
+            input[type="checkbox"] {
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+            }
+
+            input[type="number"],
+            select {
+                padding: 8px;
+                font-size: 16px;
+                border: 2px solid #ddd;
+                border-radius: 4px;
+                width: 120px;
+            }
+
+            body.dark input[type="number"],
+            body.dark select {
+                background: #1a1a1a;
+                color: #e0e0e0;
+                border-color: #444;
+            }
+
+            input[type="text"],
+            input[type="file"] {
+                padding: 8px;
+                font-size: 16px;
+                border: 2px solid #ddd;
+                border-radius: 4px;
+            }
+
+            body.dark input[type="text"],
+            body.dark input[type="file"] {
+                background: #1a1a1a;
+                color: #e0e0e0;
+                border-color: #444;
+            }
+
+            #custom-phrase-input {
+                width: 100%;
+            }
+
+            .custom-phrase-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .custom-phrase-item input {
+                flex: 1;
+            }
+
+            .delete-btn {
+                background: #f44321;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .delete-btn:hover {
+                background: #d32f2f;
+            }
+
+            #keyboard-content {
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                width: 90%;
+                max-width: 900px;
+                max-height: 95vh;
+                overflow-y: auto;
+            }
+
+            body.dark #keyboard-content {
+                background: #2a2a2a;
+            }
+
+            #text-display {
+                background: #f5f5f5;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                padding: 20px;
+                font-size: 24px;
+                min-height: 80px;
+                margin-bottom: 20px;
+                word-wrap: break-word;
+                cursor: text;
+                outline: none;
+                transition: border-color 0.2s;
+            }
+
+            #text-display:focus {
+                border-color: #4a90d9;
+                box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.3);
+            }
+
+            body.dark #text-display {
+                background: #1a1a1a;
+                border-color: #444;
+            }
+
+            body.dark #text-display:focus {
+                border-color: #4a90d9;
+                box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.3);
+            }
+
+            #keyboard-keys {
+                display: grid;
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+
+            .keyboard-row {
+                display: flex;
+                gap: 8px;
+                justify-content: center;
+            }
+
+            .key {
+                background: #e0e0e0;
+                border: 2px solid #bdbdbd;
+                border-radius: 6px;
+                padding: 15px 2px;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+                flex: 1 1 0;
+                min-width: 0;
+                min-height: 50px;
+                text-align: center;
+                transition: all 0.1s;
+                user-select: none;
+            }
+
+            body.dark .key {
+                background: #3a3a3a;
+                border-color: #555;
+                color: #e0e0e0;
+            }
+
+            .key:hover {
+                background: #d0d0d0;
+                transform: scale(1.05);
+            }
+
+            body.dark .key:hover {
+                background: #4a4a4a;
+            }
+
+            .btn.selected {
+                background: #1c8eeb !important;
+                color: white !important;
+                border: 3px solid #1c8eeb !important;
+                box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.4) !important;
+                transform: scale(1.1) !important;
+            }
+
+            body.dark .btn.selected {
+                background: #1c8eeb !important;
+                color: white !important;
+                border: 3px solid #64b5f6 !important;
+            }
+
+            .key.selected {
+                background: #1c8eeb !important;
+                color: white !important;
+                border-color: #1c8eeb !important;
+                box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.4) !important;
+                transform: scale(1.1) !important;
+            }
+
+            body.dark .key.selected {
+                background: #1c8eeb !important;
+                color: white !important;
+                border-color: #64b5f6 !important;
+            }
+
+            .key.wide {
+                flex: 2 1 0;
+            }
+
+            .key.extra-wide {
+                flex: 3 1 0;
+            }
+
+            @media (max-width: 500px) {
+                #keyboard-content {
+                    padding: 15px;
+                }
+
+                .keyboard-row {
+                    gap: 4px;
+                }
+
+                .key {
+                    padding: 10px 4px;
+                    font-size: 14px;
+                    min-height: 40px;
+                    border-radius: 4px;
+                }
+
+                #text-display {
+                    padding: 12px;
+                    font-size: 18px;
+                    min-height: 50px;
+                }
+
+                #keyboard-keys {
+                    gap: 4px;
+                }
+            }
+
+            #keyboard-controls {
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .hidden {
+                display: none !important;
+            }
+
+            #custom-phrase-icon {
+                width: 44px;
+                min-width: 44px;
+                max-width: 44px;
+                flex: 0 0 44px;
+                text-align: center;
+                font-size: 20px;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+
+            .import-export-group {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            #install-prompt {
+                flex-shrink: 0;
+                background: #399c3c;
+                color: white;
+                padding: 15px;
+                text-align: center;
+                display: none;
+            }
+
+            #install-prompt.show {
+                display: block;
+            }
+
+            #disclaimer {
+                flex-shrink: 0;
+                padding: 10px 20px;
+                text-align: center;
+                font-size: 10px;
+                color: #999;
+                line-height: 1.4;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            #disclaimer.hidden {
+                display: none;
+            }
+
+            #disclaimer-text {
+                flex: 1;
+            }
+
+            #dismiss-disclaimer {
+                background: none;
+                border: none;
+                color: #999;
+                cursor: pointer;
+                font-size: 14px;
+                padding: 0 5px;
+                flex-shrink: 0;
+            }
+
+            #dismiss-disclaimer:hover {
+                color: #666;
+            }
+
+            body.dark #disclaimer {
+                color: #666;
+            }
+
+            body.dark #dismiss-disclaimer {
+                color: #666;
+            }
+
+            body.dark #dismiss-disclaimer:hover {
+                color: #999;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="install-prompt" role="alert" aria-live="polite">
+            <span id="install-prompt-text"
+                >Install this app for offline use</span
+            >
+            <button class="btn" id="install-btn" style="margin-left: 10px">
+                Install
+            </button>
+            <button
+                class="btn secondary"
+                id="dismiss-install"
+                style="margin-left: 10px"
+            >
+                Dismiss
+            </button>
+        </div>
+
+        <div
+            id="output-banner"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+        >
+            Select a phrase or type your message
+        </div>
+
+        <div id="controls" role="toolbar" aria-label="Main controls">
+            <button
+                class="btn"
+                id="settings-btn"
+                aria-label="Open settings"
+            ></button>
+            <button
+                class="btn secondary"
+                id="clear-btn"
+                aria-label="Clear output banner"
+            ></button>
+            <button
+                class="btn secondary"
+                id="speak-btn"
+                aria-label="Speak the current message"
+            >
+                🔊 Speak
+            </button>
+        </div>
+
+        <div id="grid-container">
+            <div
+                id="phrase-grid"
+                role="list"
+                aria-label="Communication phrases"
+            ></div>
+        </div>
+
+        <div id="disclaimer">
+            <span id="disclaimer-text"
+                >This is not a medical device. This software is not approved,
+                cleared, or certified by any medical regulatory authority. It is
+                provided as-is for personal, educational, and experimental use
+                only. This application should not be relied upon in emergency or
+                life-threatening situations. Users should consult with qualified
+                healthcare professionals and certified speech-language
+                pathologists for proper AAC assessment and device
+                recommendations. Use at your own risk. The developer assumes no
+                liability for any consequences of using this software.
+                Developed by <a href="https://www.turiscandurra.com/" rel="author">Turi Scandurra</a></span>
+            <button id="dismiss-disclaimer" aria-label="Dismiss disclaimer">
+                &times;
+            </button>
+        </div>
+
+        <div
+            id="settings-modal"
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="settings-title"
+        >
+            <div class="modal-content" id="settings-content">
+                <button
+                    class="modal-close"
+                    id="settings-close-x"
+                    aria-label="Close settings"
+                >
+                    &times;
+                </button>
+                <h2 id="settings-title"></h2>
+
+                <div class="setting-group">
+                    <h3 id="language-section"></h3>
+                    <div class="setting-item">
+                        <label
+                            id="select-language-label"
+                            for="language-select"
+                        ></label>
+                        <select
+                            id="language-select"
+                            aria-label="Select language"
+                        >
+                            <option value="en">English</option> 
+                            <option value="it">Italiano</option> 
+                            <option value="es">Español</option> 
+                            <option value="de">Deutsch</option> 
+                            <option value="fr">Français</option> 
+                        </select>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3 id="display-section"></h3>
+                    <div class="setting-item">
+                        <label id="dark-mode-label" for="dark-mode"></label>
+                        <input
+                            type="checkbox"
+                            id="dark-mode"
+                            aria-label="Enable dark mode"
+                        />
+                    </div>
+                    <div class="setting-item">
+                        <label id="list-view-label" for="list-view"></label>
+                        <input
+                            type="checkbox"
+                            id="list-view"
+                            aria-label="Enable list view instead of grid"
+                        />
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3 id="speech-section">Speech Settings</h3>
+                    <div
+                        id="tts-warning"
+                        class="tts-warning"
+                        style="display: none"
+                    >
+                        Text-to-speech is not available. Your browser or system
+                        may not support speech synthesis.
+                    </div>
+                    <div class="setting-item">
+                        <label id="speech-rate-label" for="speech-rate"
+                            >Speech Rate</label
+                        >
+                        <input
+                            type="number"
+                            id="speech-rate"
+                            min="0.5"
+                            max="2"
+                            step="0.1"
+                            value="1"
+                            aria-label="Speech rate"
+                        />
+                    </div>
+                    <div class="setting-item">
+                        <label id="enable-sounds-label" for="enable-sounds"
+                            >Enable Sounds</label
+                        >
+                        <input
+                            type="checkbox"
+                            id="enable-sounds"
+                            checked
+                            aria-label="Enable sound effects"
+                        />
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3 id="selection-methods-section"></h3>
+                    <div class="setting-item">
+                        <label
+                            id="hover-select-label"
+                            for="hover-select"
+                        ></label>
+                        <input
+                            type="checkbox"
+                            id="hover-select"
+                            aria-label="Enable hover selection"
+                        />
+                    </div>
+                    <div class="setting-item">
+                        <label id="hover-time-label" for="hover-time"></label>
+                        <input
+                            type="number"
+                            id="hover-time"
+                            min="0.5"
+                            max="5"
+                            step="0.5"
+                            value="2"
+                            aria-label="Hover time in seconds"
+                        />
+                    </div>
+                    <div class="setting-item">
+                        <label id="scan-mode-label" for="scan-mode"></label>
+                        <input
+                            type="checkbox"
+                            id="scan-mode"
+                            aria-label="Enable scanning mode"
+                        />
+                    </div>
+                    <div class="setting-item">
+                        <label id="scan-speed-label" for="scan-speed"></label>
+                        <input
+                            type="number"
+                            id="scan-speed"
+                            min="0.5"
+                            max="5"
+                            step="0.5"
+                            value="1.5"
+                            aria-label="Scan speed in seconds"
+                        />
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3 id="input-devices-section"></h3>
+                    <div class="setting-item">
+                        <label
+                            id="keyboard-enabled-label"
+                            for="keyboard-enabled"
+                        ></label>
+                        <input
+                            type="checkbox"
+                            id="keyboard-enabled"
+                            checked
+                            aria-label="Enable keyboard navigation"
+                        />
+                    </div>
+                    <div class="setting-item">
+                        <label
+                            id="dpad-enabled-label"
+                            for="dpad-enabled"
+                        ></label>
+                        <input
+                            type="checkbox"
+                            id="dpad-enabled"
+                            checked
+                            aria-label="Enable gamepad D-Pad"
+                        />
+                    </div>
+                    <div class="setting-item">
+                        <label
+                            id="left-stick-enabled-label"
+                            for="left-stick-enabled"
+                        ></label>
+                        <input
+                            type="checkbox"
+                            id="left-stick-enabled"
+                            checked
+                            aria-label="Enable gamepad left stick"
+                        />
+                    </div>
+                    <div class="setting-item">
+                        <label
+                            id="right-stick-enabled-label"
+                            for="right-stick-enabled"
+                        ></label>
+                        <input
+                            type="checkbox"
+                            id="right-stick-enabled"
+                            checked
+                            aria-label="Enable gamepad right stick"
+                        />
+                    </div>
+                    <div class="setting-item">
+                        <label
+                            id="invert-vertical-label"
+                            for="invert-vertical"
+                        ></label>
+                        <input
+                            type="checkbox"
+                            id="invert-vertical"
+                            aria-label="Invert vertical axis"
+                        />
+                    </div>
+                    <div class="setting-item">
+                        <label
+                            id="invert-horizontal-label"
+                            for="invert-horizontal"
+                        ></label>
+                        <input
+                            type="checkbox"
+                            id="invert-horizontal"
+                            aria-label="Invert horizontal axis"
+                        />
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3 id="virtual-keyboard-section"></h3>
+                    <div class="setting-item">
+                        <label
+                            id="keyboard-layout-label"
+                            for="keyboard-layout"
+                        ></label>
+                        <select
+                            id="keyboard-layout"
+                            aria-label="Select keyboard layout"
+                        >
+                            <option value="qwerty">QWERTY</option>
+                            <option value="abc">ABC</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3 id="custom-phrases-section"></h3>
+                    <div class="custom-phrase-item">
+                        <input
+                            type="text"
+                            id="custom-phrase-input"
+                            maxlength="100"
+                            aria-label="Enter custom phrase"
+                        />
+                        <input
+                            type="text"
+                            id="custom-phrase-icon"
+                            class="phrase-icon-input"
+                            maxlength="2"
+                            placeholder="📝"
+                            aria-label="Enter icon or emoji"
+                        />
+                        <button
+                            class="btn"
+                            id="add-phrase-btn"
+                            aria-label="Add custom phrase"
+                        ></button>
+                    </div>
+                    <div id="custom-phrases-list"></div>
+                </div>
+
+                <div class="setting-group">
+                    <h3 id="import-export-section">Import/Export Settings</h3>
+                    <div class="import-export-group">
+                        <button
+                            class="btn"
+                            id="export-settings-btn"
+                            aria-label="Export all settings"
+                        >
+                            📥 Export Settings
+                        </button>
+                        <button
+                            class="btn"
+                            id="import-settings-btn"
+                            aria-label="Import settings from file"
+                        >
+                            📤 Import Settings
+                        </button>
+                        <input
+                            type="file"
+                            id="import-file-input"
+                            accept=".json"
+                            class="hidden"
+                            aria-label="Select settings file to import"
+                        />
+                    </div>
+                </div>
+
+                <button
+                    class="btn"
+                    id="close-settings"
+                    aria-label="Close settings"
+                ></button>
+            </div>
+        </div>
+
+        <div
+            id="keyboard-modal"
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="keyboard-title"
+        >
+            <div class="modal-content" id="keyboard-content">
+                <button
+                    class="modal-close"
+                    id="keyboard-close-x"
+                    aria-label="Close keyboard"
+                >
+                    &times;
+                </button>
+                <h2 id="keyboard-title"></h2>
+                <div
+                    id="text-display"
+                    role="textbox"
+                    tabindex="0"
+                    aria-live="polite"
+                    aria-atomic="true"
+                ></div>
+                <div
+                    id="keyboard-keys"
+                    role="grid"
+                    aria-label="Virtual keyboard"
+                ></div>
+                <div id="keyboard-controls">
+                    <button
+                        class="btn"
+                        id="speak-text-btn"
+                        aria-label="Speak the typed message"
+                    ></button>
+                    <button
+                        class="btn secondary"
+                        id="cancel-text-btn"
+                        aria-label="Cancel and close keyboard"
+                    ></button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const MAX_PHRASE_LENGTH = 100;
+            const MAX_TEXT_LENGTH = 500;
+            const STORAGE_SETTINGS_KEY = "VoxEaseSettings";
+            const STORAGE_PHRASES_KEY = "VoxEaseCustomPhrases";
+
+            // Language definitions
+            const languages = {
+                en: {
+                    name: "English",
+                    phrases: [
+                        { text: "Yes", icon: "✅" },
+                        { text: "No", icon: "❌" },
+                        { text: "Thank you", icon: "🙏" },
+                        { text: "Please", icon: "🤝" },
+                        { text: "I don't know", icon: "🤷" },
+                        { text: "Hello", icon: "👋" },
+                        { text: "Goodbye", icon: "👋" },
+                        { text: "I need help", icon: "🆘" },
+                        { text: "I'm in pain", icon: "😣" },
+                        { text: "I need water", icon: "💧" },
+                        { text: "I need the bathroom", icon: "🚻" },
+                        { text: "I'm tired", icon: "😴" },
+                        { text: "I'm hungry", icon: "🍽️" },
+                        { text: "I'm cold", icon: "🥶" },
+                        { text: "I'm hot", icon: "🥵" },
+                        { text: "Call the doctor", icon: "👨‍⚕️" },
+                        { text: "Call the nurse", icon: "👩‍⚕️" },
+                        { text: "I need medicine", icon: "💊" },
+                        { text: "I'm okay", icon: "👍" },
+                        { text: "Not now", icon: "⏸️" },
+                        { text: "Maybe later", icon: "⏰" },
+                    ],
+                    typeMessage: { text: "Type message", icon: "⌨️" },
+                    selectPhrase: "Select a phrase or type your message",
+                    ui: {
+                        settings: "⚙️ Settings",
+                        clear: "🗑️ Clear",
+                        speak: "🔊 Speak",
+                        settingsTitle: "Settings",
+                        language: "Language",
+                        selectLanguage: "Select Language",
+                        display: "Display",
+                        darkMode: "Dark Mode",
+                        listView: "List View (instead of Grid)",
+                        speech: "Speech Settings",
+                        speechRate: "Speech Rate",
+                        enableSounds: "Enable Sounds",
+                        selectionMethods: "Selection Methods",
+                        hoverSelection: "Hover Selection",
+                        hoverTime: "Hover Time (seconds)",
+                        scanningMode: "Scanning Mode",
+                        scanSpeed: "Scan Speed (seconds)",
+                        inputDevices: "Input Devices",
+                        keyboardArrows: "Keyboard (Arrow Keys)",
+                        gamepadDPad: "Gamepad D-Pad",
+                        gamepadLeftStick: "Gamepad Left Stick",
+                        gamepadRightStick: "Gamepad Right Stick",
+                        invertVertical: "Invert Vertical Axis",
+                        invertHorizontal: "Invert Horizontal Axis",
+                        virtualKeyboard: "Virtual Keyboard",
+                        keyboardLayout: "Keyboard Layout",
+                        customPhrases: "Custom Phrases",
+                        enterCustomPhrase: "Enter custom phrase",
+                        add: "Add",
+                        delete: "Delete",
+                        close: "Close",
+                        typeYourMessage: "Type Your Message",
+                        displayMessage: "Display Message",
+                        cancel: "Cancel",
+                        space: "SPACE",
+                        back: "BACK",
+                        clear: "CLEAR",
+                        importExport: "Import/Export Settings",
+                        exportSettings: "📥 Export Settings",
+                        importSettings: "📤 Import Settings",
+                    },
+                },
+                it: {
+                    name: "Italiano",
+                    phrases: [
+                        { text: "Sì", icon: "✅" },
+                        { text: "No", icon: "❌" },
+                        { text: "Grazie", icon: "🙏" },
+                        { text: "Per favore", icon: "🤝" },
+                        { text: "Non lo so", icon: "🤷" },
+                        { text: "Ciao", icon: "👋" },
+                        { text: "Arrivederci", icon: "👋" },
+                        { text: "Ho bisogno di aiuto", icon: "🆘" },
+                        { text: "Ho dolore", icon: "😣" },
+                        { text: "Ho bisogno di acqua", icon: "💧" },
+                        { text: "Ho bisogno del bagno", icon: "🚻" },
+                        { text: "Sono stanco", icon: "😴" },
+                        { text: "Ho fame", icon: "🍽️" },
+                        { text: "Ho freddo", icon: "🥶" },
+                        { text: "Ho caldo", icon: "🥵" },
+                        { text: "Chiama il dottore", icon: "👨‍⚕️" },
+                        { text: "Chiama l'infermiere", icon: "👩‍⚕️" },
+                        { text: "Ho bisogno di medicina", icon: "💊" },
+                        { text: "Sto bene", icon: "👍" },
+                        { text: "Non ora", icon: "⏸️" },
+                        { text: "Forse dopo", icon: "⏰" },
+                    ],
+                    typeMessage: { text: "Scrivi messaggio", icon: "⌨️" },
+                    selectPhrase:
+                        "Seleziona una frase o scrivi il tuo messaggio",
+                    ui: {
+                        settings: "⚙️ Impostazioni",
+                        clear: "🗑️ Cancella",
+                        speak: "🔊 Parla",
+                        settingsTitle: "Impostazioni",
+                        language: "Lingua",
+                        selectLanguage: "Seleziona Lingua",
+                        display: "Visualizzazione",
+                        darkMode: "Modalità Scura",
+                        listView: "Vista Elenco (invece di Griglia)",
+                        speech: "Impostazioni Voce",
+                        speechRate: "Velocità Voce",
+                        enableSounds: "Abilita Suoni",
+                        selectionMethods: "Metodi di Selezione",
+                        hoverSelection: "Selezione al Passaggio",
+                        hoverTime: "Tempo di Passaggio (secondi)",
+                        scanningMode: "Modalità Scansione",
+                        scanSpeed: "Velocità Scansione (secondi)",
+                        inputDevices: "Dispositivi di Input",
+                        keyboardArrows: "Tastiera (Frecce)",
+                        gamepadDPad: "Gamepad D-Pad",
+                        gamepadLeftStick: "Gamepad Stick Sinistro",
+                        gamepadRightStick: "Gamepad Stick Destro",
+                        invertVertical: "Inverti Asse Verticale",
+                        invertHorizontal: "Inverti Asse Orizzontale",
+                        virtualKeyboard: "Tastiera Virtuale",
+                        keyboardLayout: "Layout Tastiera",
+                        customPhrases: "Frasi Personalizzate",
+                        enterCustomPhrase: "Inserisci frase personalizzata",
+                        add: "Aggiungi",
+                        delete: "Elimina",
+                        close: "Chiudi",
+                        typeYourMessage: "Scrivi il Tuo Messaggio",
+                        displayMessage: "Mostra Messaggio",
+                        cancel: "Annulla",
+                        space: "SPAZIO",
+                        back: "INDIETRO",
+                        clear: "CANCELLA",
+                        importExport: "Importa/Esporta Impostazioni",
+                        exportSettings: "📥 Esporta Impostazioni",
+                        importSettings: "📤 Importa Impostazioni",
+                    },
+                },
+                es: {
+                    name: "Español",
+                    phrases: [
+                        { text: "Sí", icon: "✅" },
+                        { text: "No", icon: "❌" },
+                        { text: "Gracias", icon: "🙏" },
+                        { text: "Por favor", icon: "🤝" },
+                        { text: "No lo sé", icon: "🤷" },
+                        { text: "Hola", icon: "👋" },
+                        { text: "Adiós", icon: "👋" },
+                        { text: "Necesito ayuda", icon: "🆘" },
+                        { text: "Tengo dolor", icon: "😣" },
+                        { text: "Necesito agua", icon: "💧" },
+                        { text: "Necesito el baño", icon: "🚻" },
+                        { text: "Estoy cansado", icon: "😴" },
+                        { text: "Tengo hambre", icon: "🍽️" },
+                        { text: "Tengo frío", icon: "🥶" },
+                        { text: "Tengo calor", icon: "🥵" },
+                        { text: "Llama al doctor", icon: "👨‍⚕️" },
+                        { text: "Llama a la enfermera", icon: "👩‍⚕️" },
+                        { text: "Necesito medicina", icon: "💊" },
+                        { text: "Estoy bien", icon: "👍" },
+                        { text: "Ahora no", icon: "⏸️" },
+                        { text: "Quizás más tarde", icon: "⏰" },
+                    ],
+                    typeMessage: { text: "Escribir mensaje", icon: "⌨️" },
+                    selectPhrase: "Selecciona una frase o escribe tu mensaje",
+                    ui: {
+                        settings: "⚙️ Ajustes",
+                        clear: "🗑️ Borrar",
+                        speak: "🔊 Hablar",
+                        settingsTitle: "Ajustes",
+                        language: "Idioma",
+                        selectLanguage: "Seleccionar Idioma",
+                        display: "Visualización",
+                        darkMode: "Modo Oscuro",
+                        listView: "Vista de Lista (en lugar de Cuadrícula)",
+                        speech: "Configuración de Voz",
+                        speechRate: "Velocidad de Voz",
+                        enableSounds: "Activar Sonidos",
+                        selectionMethods: "Métodos de Selección",
+                        hoverSelection: "Selección por Desplazamiento",
+                        hoverTime: "Tiempo de Desplazamiento (segundos)",
+                        scanningMode: "Modo de Escaneo",
+                        scanSpeed: "Velocidad de Escaneo (segundos)",
+                        inputDevices: "Dispositivos de Entrada",
+                        keyboardArrows: "Teclado (Flechas)",
+                        gamepadDPad: "Mando D-Pad",
+                        gamepadLeftStick: "Mando Stick Izquierdo",
+                        gamepadRightStick: "Mando Stick Derecho",
+                        invertVertical: "Invertir Eje Vertical",
+                        invertHorizontal: "Invertir Eje Horizontal",
+                        virtualKeyboard: "Teclado Virtual",
+                        keyboardLayout: "Diseño de Teclado",
+                        customPhrases: "Frases Personalizadas",
+                        enterCustomPhrase: "Introduce frase personalizada",
+                        add: "Añadir",
+                        delete: "Eliminar",
+                        close: "Cerrar",
+                        typeYourMessage: "Escribe tu Mensaje",
+                        displayMessage: "Mostrar Mensaje",
+                        cancel: "Cancelar",
+                        space: "ESPACIO",
+                        back: "BORRAR",
+                        clear: "LIMPIAR",
+                        importExport: "Importar/Exportar Ajustes",
+                        exportSettings: "📥 Exportar Ajustes",
+                        importSettings: "📤 Importar Ajustes",
+                    },
+                },
+                de: {
+                    name: "Deutsch",
+                    phrases: [
+                        { text: "Ja", icon: "✅" },
+                        { text: "Nein", icon: "❌" },
+                        { text: "Danke", icon: "🙏" },
+                        { text: "Bitte", icon: "🤝" },
+                        { text: "Ich weiß nicht", icon: "🤷" },
+                        { text: "Hallo", icon: "👋" },
+                        { text: "Auf Wiedersehen", icon: "👋" },
+                        { text: "Ich brauche Hilfe", icon: "🆘" },
+                        { text: "Ich habe Schmerzen", icon: "😣" },
+                        { text: "Ich brauche Wasser", icon: "💧" },
+                        { text: "Ich brauche die Toilette", icon: "🚻" },
+                        { text: "Ich bin müde", icon: "😴" },
+                        { text: "Ich habe Hunger", icon: "🍽️" },
+                        { text: "Mir ist kalt", icon: "🥶" },
+                        { text: "Mir ist heiß", icon: "🥵" },
+                        { text: "Rufen Sie den Arzt", icon: "👨‍⚕️" },
+                        { text: "Rufen Sie die Krankenschwester", icon: "👩‍⚕️" },
+                        { text: "Ich brauche Medizin", icon: "💊" },
+                        { text: "Mir geht es gut", icon: "👍" },
+                        { text: "Jetzt nicht", icon: "⏸️" },
+                        { text: "Vielleicht später", icon: "⏰" },
+                    ],
+                    typeMessage: { text: "Nachricht schreiben", icon: "⌨️" },
+                    selectPhrase:
+                        "Wählen Sie einen Satz oder schreiben Sie Ihre Nachricht",
+                    ui: {
+                        settings: "⚙️ Einstellungen",
+                        clear: "🗑️ Löschen",
+                        speak: "🔊 Sprechen",
+                        settingsTitle: "Einstellungen",
+                        language: "Sprache",
+                        selectLanguage: "Sprache wählen",
+                        display: "Anzeige",
+                        darkMode: "Dunkler Modus",
+                        listView: "Listenansicht (statt Raster)",
+                        speech: "Spracheinstellungen",
+                        speechRate: "Sprechgeschwindigkeit",
+                        enableSounds: "Töne aktivieren",
+                        selectionMethods: "Auswahlmethoden",
+                        hoverSelection: "Hover-Auswahl",
+                        hoverTime: "Hover-Zeit (Sekunden)",
+                        scanningMode: "Scan-Modus",
+                        scanSpeed: "Scan-Geschwindigkeit (Sekunden)",
+                        inputDevices: "Eingabegeräte",
+                        keyboardArrows: "Tastatur (Pfeiltasten)",
+                        gamepadDPad: "Gamepad D-Pad",
+                        gamepadLeftStick: "Gamepad Linker Stick",
+                        gamepadRightStick: "Gamepad Rechter Stick",
+                        invertVertical: "Vertikale Achse umkehren",
+                        invertHorizontal: "Horizontale Achse umkehren",
+                        virtualKeyboard: "Virtuelle Tastatur",
+                        keyboardLayout: "Tastaturlayout",
+                        customPhrases: "Benutzerdefinierte Sätze",
+                        enterCustomPhrase: "Benutzerdefinierten Satz eingeben",
+                        add: "Hinzufügen",
+                        delete: "Löschen",
+                        close: "Schließen",
+                        typeYourMessage: "Ihre Nachricht eingeben",
+                        displayMessage: "Nachricht anzeigen",
+                        cancel: "Abbrechen",
+                        space: "LEERTASTE",
+                        back: "ZURÜCK",
+                        clear: "LÖSCHEN",
+                        importExport: "Einstellungen Importieren/Exportieren",
+                        exportSettings: "📥 Einstellungen exportieren",
+                        importSettings: "📤 Einstellungen importieren",
+                    },
+                },
+                fr: {
+                    name: "Français",
+                    phrases: [
+                        { text: "Oui", icon: "✅" },
+                        { text: "Non", icon: "❌" },
+                        { text: "Merci", icon: "🙏" },
+                        { text: "S'il vous plaît", icon: "🤝" },
+                        { text: "Je ne sais pas", icon: "🤷" },
+                        { text: "Bonjour", icon: "👋" },
+                        { text: "Au revoir", icon: "👋" },
+                        { text: "J'ai besoin d'aide", icon: "🆘" },
+                        { text: "J'ai mal", icon: "😣" },
+                        { text: "J'ai besoin d'eau", icon: "💧" },
+                        { text: "J'ai besoin des toilettes", icon: "🚻" },
+                        { text: "Je suis fatigué", icon: "😴" },
+                        { text: "J'ai faim", icon: "🍽️" },
+                        { text: "J'ai froid", icon: "🥶" },
+                        { text: "J'ai chaud", icon: "🥵" },
+                        { text: "Appelez le docteur", icon: "👨‍⚕️" },
+                        { text: "Appelez l'infirmière", icon: "👩‍⚕️" },
+                        { text: "J'ai besoin de médicaments", icon: "💊" },
+                        { text: "Je vais bien", icon: "👍" },
+                        { text: "Pas maintenant", icon: "⏸️" },
+                        { text: "Peut-être plus tard", icon: "⏰" },
+                    ],
+                    typeMessage: { text: "Écrire un message", icon: "⌨️" },
+                    selectPhrase:
+                        "Sélectionnez une phrase ou écrivez votre message",
+                    ui: {
+                        settings: "⚙️ Paramètres",
+                        clear: "🗑️ Effacer",
+                        speak: "🔊 Parler",
+                        settingsTitle: "Paramètres",
+                        language: "Langue",
+                        selectLanguage: "Sélectionner la langue",
+                        display: "Affichage",
+                        darkMode: "Mode Sombre",
+                        listView: "Vue Liste (au lieu de Grille)",
+                        speech: "Paramètres de Voix",
+                        speechRate: "Vitesse de Parole",
+                        enableSounds: "Activer les Sons",
+                        selectionMethods: "Méthodes de Sélection",
+                        hoverSelection: "Sélection au Survol",
+                        hoverTime: "Temps de Survol (secondes)",
+                        scanningMode: "Mode Balayage",
+                        scanSpeed: "Vitesse de Balayage (secondes)",
+                        inputDevices: "Périphériques d'Entrée",
+                        keyboardArrows: "Clavier (Touches Fléchées)",
+                        gamepadDPad: "Manette D-Pad",
+                        gamepadLeftStick: "Manette Stick Gauche",
+                        gamepadRightStick: "Manette Stick Droit",
+                        invertVertical: "Inverser l'Axe Vertical",
+                        invertHorizontal: "Inverser l'Axe Horizontal",
+                        virtualKeyboard: "Clavier Virtuel",
+                        keyboardLayout: "Disposition du Clavier",
+                        customPhrases: "Phrases Personnalisées",
+                        enterCustomPhrase: "Entrer une phrase personnalisée",
+                        add: "Ajouter",
+                        delete: "Supprimer",
+                        close: "Fermer",
+                        typeYourMessage: "Tapez votre Message",
+                        displayMessage: "Afficher le Message",
+                        cancel: "Annuler",
+                        space: "ESPACE",
+                        back: "RETOUR",
+                        clear: "EFFACER",
+                        importExport: "Importer/Exporter les Paramètres",
+                        exportSettings: "📥 Exporter les Paramètres",
+                        importSettings: "📤 Importer les Paramètres",
+                    },
+                },
+            };
+
+            // Keyboard layouts
+            const keyboardLayouts = {
+                qwerty: [
+                    ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+                    ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+                    ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+                    ["Z", "X", "C", "V", "B", "N", "M"],
+                    [" ", ".", ",", "'", "?", "!", "BACK", "CLEAR"],
+                ],
+                abc: [
+                    ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+                    ["A", "B", "C", "D", "E", "F", "G"],
+                    ["H", "I", "J", "K", "L", "M", "N"],
+                    ["O", "P", "Q", "R", "S", "T", "U"],
+                    ["V", "W", "X", "Y", "Z"],
+                    [" ", ".", ",", "'", "?", "!", "BACK", "CLEAR"],
+                ],
+            };
+
+            // State management
+            const state = {
+                phrases: [],
+                customPhrases: [],
+                selectedIndex: 0,
+                keyboardSelectedIndex: 0,
+                keyboardTotalItems: 0,
+                currentText: "",
+                hoverTimer: null,
+                scanTimer: null,
+                lastGamepadState: {},
+                gamepadDeadzone: 0.3,
+                gamepadMoveThreshold: 0.7,
+                lastMoveTime: 0,
+                moveDelay: 200,
+                keyboardMode: false,
+                gamepadLoopRunning: false,
+                cachedPhraseElements: [],
+                settings: {
+                    language: "en",
+                    darkMode: false,
+                    listView: false,
+                    hoverSelect: false,
+                    hoverTime: 2,
+                    scanMode: false,
+                    scanSpeed: 1.5,
+                    keyboardEnabled: true,
+                    dpadEnabled: true,
+                    leftStickEnabled: true,
+                    rightStickEnabled: true,
+                    invertVertical: false,
+                    invertHorizontal: false,
+                    keyboardLayout: "qwerty",
+                    autoSpeak: true,
+                    speechRate: 1,
+                    enableSounds: true,
+                },
+                deferredPrompt: null,
+            };
+
+            // Utility: Escape HTML
+            function escapeHtml(text) {
+                const div = document.createElement("div");
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            // Utility: Play sound effect using Web Audio API
+            let audioContext = null;
+            function playSound(soundId) {
+                if (!state.settings.enableSounds) return;
+                try {
+                    if (!audioContext) {
+                        audioContext = new (
+                            window.AudioContext || window.webkitAudioContext
+                        )();
+                    }
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+
+                    if (soundId === "select-sound") {
+                        oscillator.frequency.value = 1200;
+                        oscillator.type = "sine";
+                        gainNode.gain.setValueAtTime(
+                            0.1,
+                            audioContext.currentTime,
+                        );
+                        gainNode.gain.exponentialRampToValueAtTime(
+                            0.01,
+                            audioContext.currentTime + 0.08,
+                        );
+                        oscillator.start(audioContext.currentTime);
+                        oscillator.stop(audioContext.currentTime + 0.08);
+                    }
+                } catch (e) {
+                    // Ignore if Web Audio API not supported
+                }
+            }
+
+            // Text-to-Speech availability check
+            let ttsAvailable = false;
+
+            function checkTTSAvailability() {
+                if (!("speechSynthesis" in window)) {
+                    ttsAvailable = false;
+                    updateTTSUI();
+                    return;
+                }
+
+                // Check voices (may load asynchronously)
+                const checkVoices = () => {
+                    const voices = speechSynthesis.getVoices();
+                    ttsAvailable = voices.length > 0;
+                    updateTTSUI();
+                };
+
+                checkVoices();
+
+                // Some browsers load voices asynchronously
+                if (speechSynthesis.onvoiceschanged !== undefined) {
+                    speechSynthesis.onvoiceschanged = checkVoices;
+                }
+            }
+
+            function updateTTSUI() {
+                const speakBtn = document.getElementById("speak-btn");
+                const ttsWarning = document.getElementById("tts-warning");
+
+                if (ttsAvailable) {
+                    speakBtn.disabled = false;
+                    speakBtn.style.opacity = "1";
+                    speakBtn.style.cursor = "pointer";
+                    ttsWarning.style.display = "none";
+                } else {
+                    speakBtn.disabled = true;
+                    speakBtn.style.opacity = "0.5";
+                    speakBtn.style.cursor = "not-allowed";
+                    ttsWarning.style.display = "block";
+                }
+            }
+
+            // Text-to-Speech function
+            function speakPhrase(text) {
+                if (!text || !text.trim() || !ttsAvailable) return;
+
+                try {
+                    // Cancel any ongoing speech
+                    if (window.speechSynthesis.speaking) {
+                        window.speechSynthesis.cancel();
+                    }
+
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    const langMap = {
+                        en: "en-US",
+                        it: "it-IT",
+                        es: "es-ES",
+                        de: "de-DE",
+                        fr: "fr-FR",
+                    };
+                    utterance.lang =
+                        langMap[state.settings.language] || "en-US";
+                    utterance.rate = state.settings.speechRate || 1;
+
+                    window.speechSynthesis.speak(utterance);
+                } catch (e) {
+                    console.error("Speech synthesis failed:", e);
+                    showError("Speech synthesis not supported or failed");
+                }
+            }
+
+            // Show error message
+            function showError(message) {
+                const banner = document.getElementById("output-banner");
+                const prevText = banner.textContent;
+                banner.textContent = "⚠️ " + message;
+                setTimeout(() => {
+                    banner.textContent = prevText;
+                }, 3000);
+            }
+
+            // Storage functions with error handling
+            function saveSettings() {
+                try {
+                    localStorage.setItem(
+                        STORAGE_SETTINGS_KEY,
+                        JSON.stringify(state.settings),
+                    );
+                } catch (e) {
+                    console.error("Failed to save settings:", e);
+                    showError("Failed to save settings. Storage may be full.");
+                }
+            }
+
+            function loadSettings() {
+                try {
+                    const saved = localStorage.getItem(STORAGE_SETTINGS_KEY);
+                    if (saved) {
+                        const parsed = JSON.parse(saved);
+                        state.settings = { ...state.settings, ...parsed };
+                    }
+                } catch (e) {
+                    console.error("Failed to load settings:", e);
+                    showError("Failed to load settings. Using defaults.");
+                }
+            }
+
+            function saveCustomPhrases() {
+                try {
+                    localStorage.setItem(
+                        STORAGE_PHRASES_KEY,
+                        JSON.stringify(state.customPhrases),
+                    );
+                } catch (e) {
+                    console.error("Failed to save custom phrases:", e);
+                    showError(
+                        "Failed to save custom phrases. Storage may be full.",
+                    );
+                }
+            }
+
+            function loadCustomPhrases() {
+                try {
+                    const saved = localStorage.getItem(STORAGE_PHRASES_KEY);
+                    if (saved) {
+                        state.customPhrases = JSON.parse(saved);
+                    }
+                } catch (e) {
+                    console.error("Failed to load custom phrases:", e);
+                    showError("Failed to load custom phrases.");
+                }
+            }
+
+            function updatePhrases() {
+                const lang = languages[state.settings.language];
+                state.phrases = [
+                    ...lang.phrases,
+                    ...state.customPhrases,
+                    lang.typeMessage,
+                ];
+            }
+
+            // Render functions with incremental updates
+            function renderPhrases() {
+                const grid = document.getElementById("phrase-grid");
+                const lang = languages[state.settings.language];
+
+                // Clear grid
+                grid.innerHTML = "";
+                state.cachedPhraseElements = [];
+
+                state.phrases.forEach((phrase, index) => {
+                    const div = document.createElement("div");
+                    div.className = "phrase-item";
+                    div.setAttribute("role", "listitem");
+                    div.setAttribute("tabindex", "0");
+
+                    const phraseText =
+                        typeof phrase === "string" ? phrase : phrase.text;
+                    const phraseIcon =
+                        typeof phrase === "object" && phrase.icon
+                            ? phrase.icon
+                            : "";
+
+                    const isTypeMessage =
+                        phraseText === lang.typeMessage.text ||
+                        (typeof phrase === "object" &&
+                            phrase === lang.typeMessage);
+
+                    if (isTypeMessage) {
+                        div.classList.add("special");
+                    }
+
+                    // Set ARIA label
+                    div.setAttribute("aria-label", phraseText);
+
+                    // Add icon if available
+                    if (phraseIcon) {
+                        const iconSpan = document.createElement("span");
+                        iconSpan.className = "phrase-icon";
+                        iconSpan.textContent = phraseIcon;
+                        iconSpan.setAttribute("aria-hidden", "true");
+                        div.appendChild(iconSpan);
+                    }
+
+                    // Add text
+                    const textSpan = document.createElement("span");
+                    textSpan.className = "phrase-text";
+                    textSpan.textContent = phraseText;
+                    div.appendChild(textSpan);
+
+                    div.dataset.index = index;
+
+                    div.addEventListener("click", () => selectPhrase(index));
+
+                    if (state.settings.hoverSelect) {
+                        div.addEventListener("mouseenter", () =>
+                            startHoverTimer(index),
+                        );
+                        div.addEventListener("mouseleave", () =>
+                            clearHoverTimer(),
+                        );
+                    }
+
+                    grid.appendChild(div);
+                    state.cachedPhraseElements[index] = div;
+                });
+
+                updateSelection();
+            }
+
+            function updateSelection() {
+                state.cachedPhraseElements.forEach((item, index) => {
+                    if (item) {
+                        const isSelected = index === state.selectedIndex;
+                        item.classList.toggle("selected", isSelected);
+                        item.setAttribute(
+                            "aria-selected",
+                            isSelected ? "true" : "false",
+                        );
+                    }
+                });
+            }
+
+            function selectPhrase(index) {
+                if (index >= 0 && index < state.phrases.length) {
+                    const phrase = state.phrases[index];
+                    const lang = languages[state.settings.language];
+                    const phraseText =
+                        typeof phrase === "string" ? phrase : phrase.text;
+                    const isTypeMessage =
+                        phraseText === lang.typeMessage.text ||
+                        (typeof phrase === "object" &&
+                            phrase === lang.typeMessage);
+
+                    if (isTypeMessage) {
+                        openKeyboard();
+                    } else {
+                        const banner = document.getElementById("output-banner");
+                        banner.textContent = phraseText;
+                        state.selectedIndex = index;
+                        updateSelection();
+
+                        if (state.settings.autoSpeak) {
+                            speakPhrase(phraseText);
+                        } else {
+                            playSound("select-sound");
+                        }
+                    }
+                }
+            }
+
+            // Hover selection
+            function startHoverTimer(index) {
+                clearHoverTimer();
+                const item = state.cachedPhraseElements[index];
+                if (item) {
+                    item.classList.add("hovering");
+                }
+
+                state.hoverTimer = setTimeout(() => {
+                    selectPhrase(index);
+                    if (item) {
+                        item.classList.remove("hovering");
+                    }
+                }, state.settings.hoverTime * 1000);
+            }
+
+            function clearHoverTimer() {
+                if (state.hoverTimer) {
+                    clearTimeout(state.hoverTimer);
+                    state.hoverTimer = null;
+                    state.cachedPhraseElements.forEach((item) => {
+                        if (item) {
+                            item.classList.remove("hovering");
+                        }
+                    });
+                }
+            }
+
+            // Scanning mode
+            function startScanMode() {
+                stopScanMode();
+                if (!state.settings.scanMode) return;
+
+                state.scanTimer = setInterval(() => {
+                    state.selectedIndex =
+                        (state.selectedIndex + 1) % state.phrases.length;
+                    updateSelection();
+                }, state.settings.scanSpeed * 1000);
+            }
+
+            function stopScanMode() {
+                if (state.scanTimer) {
+                    clearInterval(state.scanTimer);
+                    state.scanTimer = null;
+                }
+            }
+
+            // Navigation
+            function navigate(direction) {
+                const now = Date.now();
+                if (now - state.lastMoveTime < state.moveDelay) return;
+                state.lastMoveTime = now;
+
+                if (state.keyboardMode) {
+                    navigateKeyboard(direction);
+                    return;
+                }
+
+                const grid = document.getElementById("phrase-grid");
+                const isListView = state.settings.listView;
+                const totalItems = state.phrases.length;
+
+                if (isListView) {
+                    if (direction === "up") {
+                        state.selectedIndex =
+                            (state.selectedIndex - 1 + totalItems) % totalItems;
+                    } else if (direction === "down") {
+                        state.selectedIndex =
+                            (state.selectedIndex + 1) % totalItems;
+                    }
+                } else {
+                    const cols =
+                        getComputedStyle(grid).gridTemplateColumns.split(
+                            " ",
+                        ).length;
+
+                    if (direction === "up") {
+                        state.selectedIndex =
+                            (state.selectedIndex - cols + totalItems) %
+                            totalItems;
+                    } else if (direction === "down") {
+                        state.selectedIndex =
+                            (state.selectedIndex + cols) % totalItems;
+                    } else if (direction === "left") {
+                        state.selectedIndex =
+                            (state.selectedIndex - 1 + totalItems) % totalItems;
+                    } else if (direction === "right") {
+                        state.selectedIndex =
+                            (state.selectedIndex + 1) % totalItems;
+                    }
+                }
+
+                updateSelection();
+                scrollToSelected();
+            }
+
+            function scrollToSelected() {
+                const selected =
+                    state.cachedPhraseElements[state.selectedIndex];
+                if (selected) {
+                    selected.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest",
+                    });
+                }
+            }
+
+            // Keyboard controls
+            function handleKeyboard(e) {
+                if (!state.settings.keyboardEnabled) return;
+
+                const settingsOpen = document 
+                    .getElementById("settings-modal")
+                    .classList.contains("active");
+                const keyboardOpen = document
+                    .getElementById("keyboard-modal")
+                    .classList.contains("active");
+
+                // Escape key to close modals
+                if (e.key === "Escape") {
+                    e.preventDefault();
+                    if (settingsOpen) {
+                        closeSettings();
+                    } else if (keyboardOpen) {
+                        closeKeyboard();
+                    }
+                    return;
+                }
+
+                if (settingsOpen) return;
+
+                // Physical keyboard when keyboard modal is open
+                if (keyboardOpen) {
+                    const textDisplayFocused =
+                        document.activeElement ===
+                        document.getElementById("text-display");
+
+                    if (textDisplayFocused) {
+                        // Text field is focused: type directly into it
+                        // Letters
+                        if (e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
+                            e.preventDefault();
+                            handleKeyPress(e.key.toUpperCase()); 
+                            return;
+                        }
+                        // Numbers
+                        if (e.key.length === 1 && /[0-9]/.test(e.key)) {
+                            e.preventDefault();
+                            handleKeyPress(e.key);
+                            return;
+                        }
+                        // Punctuation
+                        if ([".", ",", "'", "?", "!"].includes(e.key)) {
+                            e.preventDefault();
+                            handleKeyPress(e.key);
+                            return;
+                        }
+                        // Space types a space
+                        if (e.key === " ") {
+                            e.preventDefault();
+                            handleKeyPress(" ");
+                            return;
+                        }
+                        // Backspace deletes
+                        if (e.key === "Backspace") {
+                            e.preventDefault();
+                            handleKeyPress("BACK");
+                            return;
+                        }
+                        // Enter submits the message
+                        if (e.key === "Enter") {
+                            e.preventDefault();
+                            speakText();
+                            return;
+                        }
+                    } else {
+                        // Text field is not focused: use Space/Enter to
+                        // commit the selected virtual key
+                        if (e.key === " " || e.key === "Enter") {
+                            e.preventDefault(); 
+                            selectKeyboardItem(state.keyboardSelectedIndex);
+                            return;
+                        }
+                        // Backspace still deletes
+                        if (e.key === "Backspace") {
+                            e.preventDefault(); 
+                            handleKeyPress("BACK");
+                            return;
+                        }
+                    }
+
+                    // Arrow keys navigate the virtual keyboard
+                    if (
+                        [
+                            "ArrowUp",
+                            "ArrowDown",
+                            "ArrowLeft",
+                            "ArrowRight",
+                        ].includes(e.key)
+                    ) {
+                        e.preventDefault();
+                        // If text-display is focused, down arrow leaves it
+                        if (textDisplayFocused && e.key === "ArrowDown") {
+                            document.getElementById("text-display").blur();
+                            state.keyboardSelectedIndex = 0;
+                            updateKeyboardUISelection();
+                        } else if (!textDisplayFocused) {
+                            const dirMap = {
+                                ArrowUp: "up",
+                                ArrowDown: "down",
+                                ArrowLeft: "left",
+                                ArrowRight: "right",
+                            };
+                            navigate(dirMap[e.key]);
+                        }
+                    }
+                    return;
+                }
+
+                // Arrow key navigation
+                if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    navigate("up");
+                } else if (e.key === "ArrowDown") {
+                    e.preventDefault();
+                    navigate("down");
+                } else if (e.key === "ArrowLeft") {
+                    e.preventDefault();
+                    navigate("left");
+                } else if (e.key === "ArrowRight") {
+                    e.preventDefault();
+                    navigate("right");
+                } else if (e.key === " " || e.key === "Enter") {
+                    // Only for phrase grid selection (not when keyboard modal is open)
+                    e.preventDefault();
+                    selectPhrase(state.selectedIndex);
+                }
+            }
+
+            // Gamepad controls with optimized polling
+            function startGamepadLoop() {
+                if (state.gamepadLoopRunning) return;
+                state.gamepadLoopRunning = true;
+                requestAnimationFrame(gamepadLoop);
+            }
+
+            function stopGamepadLoop() {
+                state.gamepadLoopRunning = false;
+            }
+
+            function gamepadLoop() {
+                if (!state.gamepadLoopRunning) return;
+
+                const gamepads = navigator.getGamepads();
+                let hasActiveGamepad = false;
+
+                for (let i = 0; i < gamepads.length; i++) {
+                    const gp = gamepads[i];
+                    if (gp && gp.connected) {
+                        hasActiveGamepad = true;
+                        handleGamepadInput(gp, i);
+                    }
+                }
+
+                // Continue loop only if gamepad is connected
+                if (hasActiveGamepad) {
+                    requestAnimationFrame(gamepadLoop);
+                } else {
+                    stopGamepadLoop();
+                }
+            }
+
+            function handleGamepadInput(gp, gpIndex) {
+                const id = gpIndex;
+
+                if (!state.lastGamepadState[id]) {
+                    state.lastGamepadState[id] = {
+                        buttons: gp.buttons.map(() => false),
+                        axes: gp.axes.map(() => 0),
+                    };
+                }
+
+                const lastState = state.lastGamepadState[id];
+
+                // D-Pad
+                if (state.settings.dpadEnabled) {
+                    if (
+                        gp.buttons[12] &&
+                        gp.buttons[12].pressed &&
+                        !lastState.buttons[12]
+                    ) {
+                        navigate(state.settings.invertVertical ? "down" : "up");
+                    }
+                    if (
+                        gp.buttons[13] &&
+                        gp.buttons[13].pressed &&
+                        !lastState.buttons[13]
+                    ) {
+                        navigate(state.settings.invertVertical ? "up" : "down");
+                    }
+                    if (
+                        gp.buttons[14] &&
+                        gp.buttons[14].pressed &&
+                        !lastState.buttons[14]
+                    ) {
+                        navigate(
+                            state.settings.invertHorizontal ? "right" : "left",
+                        );
+                    }
+                    if (
+                        gp.buttons[15] &&
+                        gp.buttons[15].pressed &&
+                        !lastState.buttons[15]
+                    ) {
+                        navigate(
+                            state.settings.invertHorizontal ? "left" : "right",
+                        );
+                    }
+                }
+
+                // Triggers
+                // LB (button 4) - left
+                if (
+                    gp.buttons[4] &&
+                    gp.buttons[4].pressed &&
+                    !lastState.buttons[4]
+                ) {
+                    navigate(
+                        state.settings.invertHorizontal ? "right" : "left",
+                    );
+                }
+                // LT (button 6) - right
+                if (
+                    gp.buttons[6] &&
+                    gp.buttons[6].pressed &&
+                    !lastState.buttons[6]
+                ) {
+                    navigate(
+                        state.settings.invertHorizontal ? "left" : "right",
+                    );
+                }
+                // RB (button 5) - right
+                if (
+                    gp.buttons[5] &&
+                    gp.buttons[5].pressed &&
+                    !lastState.buttons[5]
+                ) {
+                    navigate(
+                        state.settings.invertHorizontal ? "left" : "right",
+                    );
+                }
+                // RT (button 7) - left
+                if (
+                    gp.buttons[7] &&
+                    gp.buttons[7].pressed &&
+                    !lastState.buttons[7]
+                ) {
+                    navigate(
+                        state.settings.invertHorizontal ? "right" : "left",
+                    );
+                }
+
+                // Analog sticks
+                const leftX = gp.axes[0] || 0;
+                const leftY = gp.axes[1] || 0;
+                const rightX = gp.axes[2] || 0;
+                const rightY = gp.axes[3] || 0;
+
+                if (state.settings.leftStickEnabled) {
+                    handleAnalogStick(
+                        leftX,
+                        leftY,
+                        lastState.axes[0],
+                        lastState.axes[1],
+                    );
+                }
+
+                if (state.settings.rightStickEnabled) {
+                    handleAnalogStick(
+                        rightX,
+                        rightY,
+                        lastState.axes[2],
+                        lastState.axes[3],
+                    );
+                }
+
+                // Face buttons for selection
+                for (let j = 0; j < 4; j++) {
+                    if (
+                        gp.buttons[j] &&
+                        gp.buttons[j].pressed &&
+                        !lastState.buttons[j]
+                    ) {
+                        if (state.keyboardMode) {
+                            selectKeyboardItem(state.keyboardSelectedIndex);
+                        } else {
+                            selectPhrase(state.selectedIndex);
+                        }
+                    }
+                }
+
+                // Stick clicks
+                if (
+                    gp.buttons[10] &&
+                    gp.buttons[10].pressed &&
+                    !lastState.buttons[10]
+                ) {
+                    if (state.keyboardMode) {
+                        selectKeyboardItem(state.keyboardSelectedIndex);
+                    } else {
+                        selectPhrase(state.selectedIndex);
+                    }
+                }
+                if (
+                    gp.buttons[11] &&
+                    gp.buttons[11].pressed &&
+                    !lastState.buttons[11]
+                ) {
+                    if (state.keyboardMode) {
+                        selectKeyboardItem(state.keyboardSelectedIndex);
+                    } else {
+                        selectPhrase(state.selectedIndex);
+                    }
+                }
+
+                // Update states
+                for (let j = 0; j < Math.max(16, gp.buttons.length); j++) {
+                    lastState.buttons[j] = gp.buttons[j]
+                        ? gp.buttons[j].pressed
+                        : false;
+                }
+
+                lastState.axes = [leftX, leftY, rightX, rightY];
+            }
+
+            function handleAnalogStick(x, y, lastX, lastY) {
+                const xMult = state.settings.invertHorizontal ? -1 : 1;
+                const yMult = state.settings.invertVertical ? -1 : 1;
+
+                const adjustedX = x * xMult;
+                const adjustedY = y * yMult;
+
+                if (
+                    Math.abs(adjustedX) > state.gamepadMoveThreshold &&
+                    Math.abs(lastX) <= state.gamepadMoveThreshold
+                ) {
+                    navigate(adjustedX > 0 ? "right" : "left");
+                }
+                if (
+                    Math.abs(adjustedY) > state.gamepadMoveThreshold &&
+                    Math.abs(lastY) <= state.gamepadMoveThreshold
+                ) {
+                    navigate(adjustedY > 0 ? "down" : "up");
+                }
+            }
+
+            // Virtual keyboard
+            function openKeyboard() {
+                state.keyboardMode = true;
+                state.currentText = "";
+                state.keyboardSelectedIndex = 0;
+                document
+                    .getElementById("keyboard-modal")
+                    .classList.add("active");
+                renderKeyboard();
+                updateTextDisplay();
+                updateKeyboardUISelection();
+            }
+
+            function closeKeyboard() {
+                state.keyboardMode = false;
+                document
+                    .getElementById("keyboard-modal")
+                    .classList.remove("active");
+            }
+
+            function renderKeyboard() {
+                const container = document.getElementById("keyboard-keys");
+                container.innerHTML = "";
+
+                const layout = keyboardLayouts[state.settings.keyboardLayout];
+                const lang = languages[state.settings.language];
+
+                layout.forEach((row, rowIndex) => {
+                    const rowDiv = document.createElement("div");
+                    rowDiv.className = "keyboard-row";
+                    rowDiv.setAttribute("role", "row");
+
+                    row.forEach((key, keyIndex) => {
+                        const keyDiv = document.createElement("div");
+                        keyDiv.className = "key";
+                        keyDiv.setAttribute("role", "gridcell");
+                        keyDiv.setAttribute("tabindex", "0");
+
+                        if (key === " ") {
+                            keyDiv.textContent = lang.ui.space;
+                            keyDiv.classList.add("extra-wide");
+                            keyDiv.setAttribute("aria-label", "Space key");
+                        } else if (key === "BACK") {
+                            keyDiv.classList.add("wide");
+                            keyDiv.textContent = lang.ui.back;
+                            keyDiv.setAttribute("aria-label", "Backspace key");
+                        } else if (key === "CLEAR") {
+                            keyDiv.classList.add("wide");
+                            keyDiv.textContent = lang.ui.clear;
+                            keyDiv.setAttribute("aria-label", "Clear all text");
+                        } else {
+                            keyDiv.textContent = key;
+                            keyDiv.setAttribute("aria-label", key);
+                        }
+
+                        keyDiv.dataset.key = key;
+                        keyDiv.dataset.index = calculateKeyIndex(
+                            rowIndex,
+                            keyIndex,
+                            layout,
+                        );
+
+                        keyDiv.addEventListener("click", () => {
+                            handleKeyPress(key);
+                        });
+
+                        rowDiv.appendChild(keyDiv);
+                    });
+
+                    container.appendChild(rowDiv);
+                });
+
+                state.keyboardTotalItems = getTotalKeys() + 2;
+                updateKeyboardSelection();
+            }
+
+            function calculateKeyIndex(rowIndex, keyIndex, layout) {
+                let index = 0;
+                for (let i = 0; i < rowIndex; i++) {
+                    index += layout[i].length;
+                }
+                index += keyIndex;
+                return index;
+            }
+
+            function getTotalKeys() {
+                const layout = keyboardLayouts[state.settings.keyboardLayout];
+                return layout.reduce((sum, row) => sum + row.length, 0);
+            }
+
+            function getKeyAtIndex(index) {
+                const layout = keyboardLayouts[state.settings.keyboardLayout];
+                let count = 0;
+                for (let row of layout) {
+                    if (index < count + row.length) {
+                        return row[index - count];
+                    }
+                    count += row.length;
+                }
+                return null;
+            }
+
+            function navigateKeyboard(direction) {
+                const layout = keyboardLayouts[state.settings.keyboardLayout];
+                const totalKeys = getTotalKeys();
+                const totalItems = totalKeys + 2;
+
+                if (state.keyboardSelectedIndex >= totalKeys) {
+                    if (direction === "up") {
+                        state.keyboardSelectedIndex = totalKeys - 1;
+                    } else if (direction === "down") {
+                        state.keyboardSelectedIndex = 0;
+                    } else if (direction === "left") {
+                        if (state.keyboardSelectedIndex === totalKeys) {
+                            state.keyboardSelectedIndex = totalKeys - 1;
+                        } else {
+                            state.keyboardSelectedIndex = totalKeys;
+                        }
+                    } else if (direction === "right") {
+                        if (state.keyboardSelectedIndex === totalKeys) {
+                            state.keyboardSelectedIndex = totalKeys + 1;
+                        } else {
+                            state.keyboardSelectedIndex = 0;
+                        }
+                    }
+                    updateKeyboardUISelection();
+                    return;
+                }
+
+                let currentRow = 0;
+                let currentCol = 0;
+                let count = 0;
+
+                for (let r = 0; r < layout.length; r++) {
+                    if (
+                        state.keyboardSelectedIndex <
+                        count + layout[r].length
+                    ) {
+                        currentRow = r;
+                        currentCol = state.keyboardSelectedIndex - count;
+                        break;
+                    }
+                    count += layout[r].length;
+                }
+
+                if (direction === "up") {
+                    if (currentRow > 0) {
+                        const newRow = currentRow - 1;
+                        const newCol = Math.min(
+                            currentCol,
+                            layout[newRow].length - 1,
+                        );
+                        let newIndex = 0;
+                        for (let i = 0; i < newRow; i++) {
+                            newIndex += layout[i].length;
+                        }
+                        state.keyboardSelectedIndex = newIndex + newCol;
+                    } else {
+                        // Moving from the top row, so focus the text display
+                        document.getElementById("text-display").focus();
+                        return;
+                    }
+                } else if (direction === "down") {
+                    if (currentRow < layout.length - 1) {
+                        const newRow = currentRow + 1;
+                        const newCol = Math.min(
+                            currentCol,
+                            layout[newRow].length - 1,
+                        );
+                        let newIndex = 0;
+                        for (let i = 0; i < newRow; i++) {
+                            newIndex += layout[i].length;
+                        }
+                        state.keyboardSelectedIndex = newIndex + newCol;
+                    } else {
+                        state.keyboardSelectedIndex = totalKeys;
+                    }
+                } else if (direction === "left") {
+                    if (state.keyboardSelectedIndex === 0) {
+                        state.keyboardSelectedIndex = totalKeys + 1;
+                    } else {
+                        state.keyboardSelectedIndex--;
+                    }
+                } else if (direction === "right") {
+                    if (state.keyboardSelectedIndex === totalKeys - 1) {
+                        state.keyboardSelectedIndex = totalKeys;
+                    } else {
+                        state.keyboardSelectedIndex++;
+                    }
+                }
+
+                updateKeyboardUISelection();
+            }
+
+            function updateKeyboardSelection() {
+                document.querySelectorAll(".key").forEach((key) => {
+                    const keyIndex = parseInt(key.dataset.index);
+                    const isSelected = keyIndex === state.keyboardSelectedIndex;
+                    key.classList.toggle("selected", isSelected);
+                    key.setAttribute(
+                        "aria-selected",
+                        isSelected ? "true" : "false",
+                    );
+                });
+            }
+
+            function updateKeyboardUISelection() {
+                const totalKeys = getTotalKeys();
+
+                document.querySelectorAll(".key").forEach((key) => {
+                    const keyIndex = parseInt(key.dataset.index);
+                    const isSelected = keyIndex === state.keyboardSelectedIndex;
+                    key.classList.toggle("selected", isSelected);
+                    key.setAttribute(
+                        "aria-selected",
+                        isSelected ? "true" : "false",
+                    );
+                });
+
+                const speakBtn = document.getElementById("speak-text-btn");
+                const cancelBtn = document.getElementById("cancel-text-btn");
+
+                speakBtn.classList.toggle(
+                    "selected",
+                    state.keyboardSelectedIndex === totalKeys,
+                );
+                cancelBtn.classList.toggle(
+                    "selected",
+                    state.keyboardSelectedIndex === totalKeys + 1,
+                );
+
+                if (state.keyboardSelectedIndex === totalKeys) {
+                    speakBtn.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest",
+                    });
+                } else if (state.keyboardSelectedIndex === totalKeys + 1) {
+                    cancelBtn.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest",
+                    });
+                } else {
+                    const selectedKey = document.querySelector(".key.selected");
+                    if (selectedKey) {
+                        selectedKey.scrollIntoView({
+                            behavior: "smooth",
+                            block: "nearest",
+                        });
+                    }
+                }
+            }
+
+            function selectKeyboardItem(index) {
+                const totalKeys = getTotalKeys();
+
+                if (index === totalKeys) {
+                    speakText();
+                } else if (index === totalKeys + 1) {
+                    closeKeyboard();
+                } else {
+                    const key = getKeyAtIndex(index);
+                    if (key) {
+                        handleKeyPress(key);
+                    }
+                }
+            }
+
+            function handleKeyPress(key) {
+                if (key === "BACK") {
+                    state.currentText = state.currentText.slice(0, -1);
+                } else if (key === "CLEAR") {
+                    state.currentText = "";
+                } else if (key === " ") {
+                    if (state.currentText.length < MAX_TEXT_LENGTH) {
+                        state.currentText += " ";
+                    }
+                } else {
+                    if (state.currentText.length < MAX_TEXT_LENGTH) {
+                        state.currentText += key.toLowerCase();
+                    }
+                }
+                updateTextDisplay();
+                playSound("select-sound");
+            }
+
+            function updateTextDisplay() {
+                const display = document.getElementById("text-display");
+                display.textContent = state.currentText || " ";
+            }
+
+            function speakText() {
+                if (state.currentText.trim()) {
+                    const banner = document.getElementById("output-banner");
+                    banner.textContent = state.currentText;
+
+                    if (state.settings.autoSpeak) {
+                        speakPhrase(state.currentText);
+                    }
+
+                    closeKeyboard();
+                }
+            }
+
+            // Settings UI
+            function openSettings() {
+                const modal = document.getElementById("settings-modal");
+                modal.classList.add("active");
+
+                updateUILanguage();
+
+                document.getElementById("language-select").value =
+                    state.settings.language;
+                document.getElementById("dark-mode").checked =
+                    state.settings.darkMode;
+                document.getElementById("list-view").checked =
+                    state.settings.listView;
+                document.getElementById("speech-rate").value =
+                    state.settings.speechRate;
+                document.getElementById("enable-sounds").checked =
+                    state.settings.enableSounds;
+                document.getElementById("hover-select").checked =
+                    state.settings.hoverSelect;
+                document.getElementById("hover-time").value =
+                    state.settings.hoverTime;
+                document.getElementById("scan-mode").checked =
+                    state.settings.scanMode;
+                document.getElementById("scan-speed").value =
+                    state.settings.scanSpeed;
+                document.getElementById("keyboard-enabled").checked =
+                    state.settings.keyboardEnabled;
+                document.getElementById("dpad-enabled").checked =
+                    state.settings.dpadEnabled;
+                document.getElementById("left-stick-enabled").checked =
+                    state.settings.leftStickEnabled;
+                document.getElementById("right-stick-enabled").checked =
+                    state.settings.rightStickEnabled;
+                document.getElementById("invert-vertical").checked =
+                    state.settings.invertVertical;
+                document.getElementById("invert-horizontal").checked =
+                    state.settings.invertHorizontal;
+                document.getElementById("keyboard-layout").value =
+                    state.settings.keyboardLayout;
+
+                renderCustomPhrasesList();
+            }
+
+            function updateUILanguage() {
+                const lang = languages[state.settings.language];
+
+                document.getElementById("settings-btn").textContent =
+                    lang.ui.settings;
+                document.getElementById("clear-btn").textContent =
+                    lang.ui.clear;
+                updateSpeakButton();
+
+                document.getElementById("settings-title").textContent =
+                    lang.ui.settingsTitle;
+                document.getElementById("language-section").textContent =
+                    lang.ui.language;
+                document.getElementById("select-language-label").textContent =
+                    lang.ui.selectLanguage;
+                document.getElementById("display-section").textContent =
+                    lang.ui.display;
+                document.getElementById("dark-mode-label").textContent =
+                    lang.ui.darkMode;
+                document.getElementById("list-view-label").textContent =
+                    lang.ui.listView;
+                document.getElementById("speech-section").textContent =
+                    lang.ui.speech;
+                document.getElementById("speech-rate-label").textContent =
+                    lang.ui.speechRate;
+                document.getElementById("enable-sounds-label").textContent =
+                    lang.ui.enableSounds;
+                document.getElementById(
+                    "selection-methods-section",
+                ).textContent = lang.ui.selectionMethods;
+                document.getElementById("hover-select-label").textContent =
+                    lang.ui.hoverSelection;
+                document.getElementById("hover-time-label").textContent =
+                    lang.ui.hoverTime;
+                document.getElementById("scan-mode-label").textContent =
+                    lang.ui.scanningMode;
+                document.getElementById("scan-speed-label").textContent =
+                    lang.ui.scanSpeed;
+                document.getElementById("input-devices-section").textContent =
+                    lang.ui.inputDevices;
+                document.getElementById("keyboard-enabled-label").textContent =
+                    lang.ui.keyboardArrows;
+                document.getElementById("dpad-enabled-label").textContent =
+                    lang.ui.gamepadDPad;
+                document.getElementById(
+                    "left-stick-enabled-label",
+                ).textContent = lang.ui.gamepadLeftStick;
+                document.getElementById(
+                    "right-stick-enabled-label",
+                ).textContent = lang.ui.gamepadRightStick;
+                document.getElementById("invert-vertical-label").textContent =
+                    lang.ui.invertVertical;
+                document.getElementById("invert-horizontal-label").textContent =
+                    lang.ui.invertHorizontal;
+                document.getElementById(
+                    "virtual-keyboard-section",
+                ).textContent = lang.ui.virtualKeyboard;
+                document.getElementById("keyboard-layout-label").textContent =
+                    lang.ui.keyboardLayout;
+                document.getElementById("custom-phrases-section").textContent =
+                    lang.ui.customPhrases;
+                document.getElementById("custom-phrase-input").placeholder =
+                    lang.ui.enterCustomPhrase;
+                document.getElementById("add-phrase-btn").textContent =
+                    lang.ui.add;
+                document.getElementById("close-settings").textContent =
+                    lang.ui.close;
+                document.getElementById("import-export-section").textContent =
+                    lang.ui.importExport;
+                document.getElementById("export-settings-btn").textContent =
+                    lang.ui.exportSettings;
+                document.getElementById("import-settings-btn").textContent =
+                    lang.ui.importSettings;
+
+                document.getElementById("keyboard-title").textContent =
+                    lang.ui.typeYourMessage;
+                document.getElementById("speak-text-btn").textContent =
+                    lang.ui.displayMessage;
+                document.getElementById("cancel-text-btn").textContent =
+                    lang.ui.cancel;
+            }
+
+            function updateSpeakButton() {
+                const lang = languages[state.settings.language];
+                const speakBtn = document.getElementById("speak-btn");
+                const baseText = lang.ui.speak.replace(/^🔊\s*|^🔇\s*/, "");
+                if (state.settings.autoSpeak) {
+                    speakBtn.textContent = "🔊 " + baseText;
+                } else {
+                    speakBtn.textContent = "🔇 " + baseText;
+                }
+            }
+
+            function closeSettings() {
+                document
+                    .getElementById("settings-modal")
+                    .classList.remove("active");
+            }
+
+            function applySettings() {
+                document.body.classList.toggle("dark", state.settings.darkMode);
+                document
+                    .getElementById("phrase-grid")
+                    .classList.toggle("list-mode", state.settings.listView);
+
+                updateUILanguage();
+
+                if (state.settings.scanMode) {
+                    startScanMode();
+                } else {
+                    stopScanMode();
+                }
+            }
+
+            function updateSetting(key, value) {
+                state.settings[key] = value;
+                saveSettings();
+
+                if (key === "language") {
+                    const lang = languages[state.settings.language];
+                    document.getElementById("output-banner").textContent =
+                        lang.selectPhrase;
+                    updatePhrases();
+                    renderPhrases();
+                }
+
+                applySettings();
+
+                if (key === "hoverSelect" || key === "hoverTime") {
+                    renderPhrases();
+                }
+            }
+
+            // Custom phrases with input validation
+            function addCustomPhrase() {
+                const input = document.getElementById("custom-phrase-input");
+                const iconInput = document.getElementById("custom-phrase-icon");
+                const phrase = input.value.trim();
+                const icon = iconInput.value.trim();
+
+                if (!phrase) {
+                    showError("Please enter a phrase");
+                    return;
+                }
+
+                if (phrase.length > MAX_PHRASE_LENGTH) {
+                    showError(
+                        `Phrase too long (max ${MAX_PHRASE_LENGTH} characters)`,
+                    );
+                    return;
+                }
+
+                const phraseObj = { text: phrase, icon: icon || "📝" };
+
+                const exists = state.customPhrases.some(
+                    (p) =>
+                        (typeof p === "string" && p === phrase) ||
+                        (typeof p === "object" && p.text === phrase),
+                );
+
+                if (exists) {
+                    showError("Phrase already exists");
+                    return;
+                }
+
+                state.customPhrases.push(phraseObj);
+                updatePhrases();
+                saveCustomPhrases();
+                renderPhrases();
+                renderCustomPhrasesList();
+                input.value = "";
+                iconInput.value = "";
+                playSound("select-sound");
+            }
+
+            function deleteCustomPhrase(phrase) {
+                const phraseText =
+                    typeof phrase === "string" ? phrase : phrase.text;
+                const index = state.customPhrases.findIndex(
+                    (p) =>
+                        (typeof p === "string" && p === phraseText) ||
+                        (typeof p === "object" && p.text === phraseText),
+                );
+
+                if (index > -1) {
+                    state.customPhrases.splice(index, 1);
+                    updatePhrases();
+                    saveCustomPhrases();
+                    renderPhrases();
+                    renderCustomPhrasesList();
+                    playSound("select-sound");
+                }
+            }
+
+            function renderCustomPhrasesList() {
+                const list = document.getElementById("custom-phrases-list");
+                const lang = languages[state.settings.language];
+                list.innerHTML = "";
+
+                state.customPhrases.forEach((phrase) => {
+                    const phraseText =
+                        typeof phrase === "string" ? phrase : phrase.text;
+                    const phraseIcon =
+                        typeof phrase === "object" && phrase.icon
+                            ? phrase.icon
+                            : "";
+
+                    const div = document.createElement("div");
+                    div.className = "custom-phrase-item";
+
+                    const input = document.createElement("input");
+                    input.type = "text";
+                    input.value =
+                        (phraseIcon ? phraseIcon + " " : "") + phraseText;
+                    input.readOnly = true;
+
+                    const deleteBtn = document.createElement("button");
+                    deleteBtn.className = "delete-btn";
+                    deleteBtn.textContent = lang.ui.delete;
+                    deleteBtn.setAttribute(
+                        "aria-label",
+                        `Delete phrase: ${phraseText}`,
+                    );
+                    deleteBtn.addEventListener("click", () =>
+                        deleteCustomPhrase(phrase),
+                    );
+
+                    div.appendChild(input);
+                    div.appendChild(deleteBtn);
+                    list.appendChild(div);
+                });
+            }
+
+            // Export/import settings
+            function exportSettings() {
+                try {
+                    const data = {
+                        settings: state.settings,
+                        customPhrases: state.customPhrases,
+                        version: "1.0",
+                        exportDate: new Date().toISOString(),
+                    };
+
+                    const json = JSON.stringify(data, null, 2);
+                    const blob = new Blob([json], { type: "application/json" });
+                    const url = URL.createObjectURL(blob);
+
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = `communication-aid-settings-${Date.now()}.json`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+
+                    playSound("select-sound");
+                } catch (e) {
+                    console.error("Export failed:", e);
+                    showError("Failed to export settings");
+                }
+            }
+
+            function importSettings() {
+                document.getElementById("import-file-input").click();
+            }
+
+            function handleImportFile(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    try {
+                        const data = JSON.parse(e.target.result);
+
+                        if (data.settings) {
+                            state.settings = {
+                                ...state.settings,
+                                ...data.settings,
+                            };
+                            saveSettings();
+                        }
+
+                        if (data.customPhrases) {
+                            state.customPhrases = data.customPhrases;
+                            saveCustomPhrases();
+                        }
+
+                        updatePhrases();
+                        renderPhrases();
+                        applySettings();
+                        openSettings();
+
+                        playSound("select-sound");
+                        const banner = document.getElementById("output-banner");
+                        const prevText = banner.textContent;
+                        banner.textContent =
+                            "✅ Settings imported successfully";
+                        setTimeout(() => {
+                            banner.textContent = prevText;
+                        }, 2000);
+                    } catch (err) {
+                        console.error("Import failed:", err);
+                        showError(
+                            "Failed to import settings. Invalid file format.",
+                        );
+                    }
+                };
+                reader.readAsText(file);
+
+                // Reset file input
+                event.target.value = "";
+            }
+
+            // PWA installation
+            function setupPWA() {
+                window.addEventListener("beforeinstallprompt", (e) => {
+                    e.preventDefault();
+                    state.deferredPrompt = e;
+                    showInstallPrompt();
+                });
+
+                window.addEventListener("appinstalled", () => {
+                    state.deferredPrompt = null;
+                    hideInstallPrompt();
+                });
+            }
+
+            function showInstallPrompt() {
+                const prompt = document.getElementById("install-prompt");
+                prompt.classList.add("show");
+            }
+
+            function hideInstallPrompt() {
+                const prompt = document.getElementById("install-prompt");
+                prompt.classList.remove("show");
+            }
+
+            async function installApp() {
+                if (!state.deferredPrompt) return;
+
+                state.deferredPrompt.prompt();
+                const { outcome } = await state.deferredPrompt.userChoice;
+
+                if (outcome === "accepted") {
+                    state.deferredPrompt = null;
+                    hideInstallPrompt();
+                }
+            }
+
+            // Event listeners
+            function setupEventListeners() {
+                document
+                    .getElementById("dismiss-disclaimer")
+                    .addEventListener("click", () => {
+                        document
+                            .getElementById("disclaimer")
+                            .classList.add("hidden");
+                    });
+                document
+                    .getElementById("settings-btn")
+                    .addEventListener("click", openSettings);
+                document
+                    .getElementById("close-settings")
+                    .addEventListener("click", closeSettings);
+                document
+                    .getElementById("settings-close-x")
+                    .addEventListener("click", closeSettings);
+                document
+                    .getElementById("settings-modal")
+                    .addEventListener("click", (e) => {
+                        if (e.target.id === "settings-modal") closeSettings();
+                    });
+                document
+                    .getElementById("cancel-text-btn")
+                    .addEventListener("click", closeKeyboard);
+                document
+                    .getElementById("keyboard-close-x")
+                    .addEventListener("click", closeKeyboard);
+                document
+                    .getElementById("keyboard-modal")
+                    .addEventListener("click", (e) => {
+                        if (e.target.id === "keyboard-modal") closeKeyboard();
+                    });
+                document
+                    .getElementById("speak-text-btn")
+                    .addEventListener("click", speakText);
+                document
+                    .getElementById("clear-btn")
+                    .addEventListener("click", () => {
+                        const lang = languages[state.settings.language];
+                        document.getElementById("output-banner").textContent =
+                            lang.selectPhrase;
+                    });
+                document
+                    .getElementById("speak-btn")
+                    .addEventListener("click", () => {
+                        if (!ttsAvailable) return;
+                        updateSetting("autoSpeak", !state.settings.autoSpeak);
+                        updateSpeakButton();
+                    });
+
+                document
+                    .getElementById("language-select")
+                    .addEventListener("change", (e) =>
+                        updateSetting("language", e.target.value),
+                    );
+                document
+                    .getElementById("dark-mode")
+                    .addEventListener("change", (e) =>
+                        updateSetting("darkMode", e.target.checked),
+                    );
+                document
+                    .getElementById("list-view")
+                    .addEventListener("change", (e) =>
+                        updateSetting("listView", e.target.checked),
+                    );
+                document
+                    .getElementById("speech-rate")
+                    .addEventListener("change", (e) =>
+                        updateSetting("speechRate", parseFloat(e.target.value)),
+                    );
+                document
+                    .getElementById("enable-sounds")
+                    .addEventListener("change", (e) =>
+                        updateSetting("enableSounds", e.target.checked),
+                    );
+                document
+                    .getElementById("hover-select")
+                    .addEventListener("change", (e) =>
+                        updateSetting("hoverSelect", e.target.checked),
+                    );
+                document
+                    .getElementById("hover-time")
+                    .addEventListener("change", (e) =>
+                        updateSetting("hoverTime", parseFloat(e.target.value)),
+                    );
+                document
+                    .getElementById("scan-mode")
+                    .addEventListener("change", (e) =>
+                        updateSetting("scanMode", e.target.checked),
+                    );
+                document
+                    .getElementById("scan-speed")
+                    .addEventListener("change", (e) =>
+                        updateSetting("scanSpeed", parseFloat(e.target.value)),
+                    );
+                document
+                    .getElementById("keyboard-enabled")
+                    .addEventListener("change", (e) =>
+                        updateSetting("keyboardEnabled", e.target.checked),
+                    );
+                document
+                    .getElementById("dpad-enabled")
+                    .addEventListener("change", (e) =>
+                        updateSetting("dpadEnabled", e.target.checked),
+                    );
+                document
+                    .getElementById("left-stick-enabled")
+                    .addEventListener("change", (e) =>
+                        updateSetting("leftStickEnabled", e.target.checked),
+                    );
+                document
+                    .getElementById("right-stick-enabled")
+                    .addEventListener("change", (e) =>
+                        updateSetting("rightStickEnabled", e.target.checked),
+                    );
+                document
+                    .getElementById("invert-vertical")
+                    .addEventListener("change", (e) =>
+                        updateSetting("invertVertical", e.target.checked),
+                    );
+                document
+                    .getElementById("invert-horizontal")
+                    .addEventListener("change", (e) =>
+                        updateSetting("invertHorizontal", e.target.checked),
+                    );
+                document
+                    .getElementById("keyboard-layout")
+                    .addEventListener("change", (e) => {
+                        updateSetting("keyboardLayout", e.target.value);
+                        if (state.keyboardMode) renderKeyboard();
+                    });
+
+                document
+                    .getElementById("add-phrase-btn")
+                    .addEventListener("click", addCustomPhrase);
+                document
+                    .getElementById("custom-phrase-input")
+                    .addEventListener("keypress", (e) => {
+                        if (e.key === "Enter") addCustomPhrase();
+                    });
+
+                document
+                    .getElementById("export-settings-btn")
+                    .addEventListener("click", exportSettings);
+                document
+                    .getElementById("import-settings-btn")
+                    .addEventListener("click", importSettings);
+                document
+                    .getElementById("import-file-input")
+                    .addEventListener("change", handleImportFile);
+
+                document
+                    .getElementById("install-btn")
+                    .addEventListener("click", installApp);
+                document
+                    .getElementById("dismiss-install")
+                    .addEventListener("click", hideInstallPrompt);
+
+                document.addEventListener("keydown", handleKeyboard);
+
+                window.addEventListener("gamepadconnected", (e) => {
+                    console.log("Gamepad connected:", e.gamepad.id);
+                    startGamepadLoop();
+                });
+
+                window.addEventListener("gamepaddisconnected", (e) => {
+                    console.log("Gamepad disconnected:", e.gamepad.id);
+                });
+            }
+
+            function init() {
+                loadSettings();
+                loadCustomPhrases();
+                updatePhrases();
+                renderPhrases();
+                setupEventListeners();
+                applySettings();
+                checkTTSAvailability();
+                setupPWA();
+
+                // Check for connected gamepads on startup
+                const gamepads = navigator.getGamepads();
+                for (let i = 0; i < gamepads.length; i++) {
+                    if (gamepads[i] && gamepads[i].connected) {
+                        startGamepadLoop();
+                        break;
+                    }
+                }
+            }
+
+            // Finally, start the application
+            init();
+        </script>
+    </body>
+</html>
