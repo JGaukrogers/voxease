@@ -103,6 +103,7 @@ USE AT YOUR OWN RISK. The developer assumes no liability for any consequences of
 - 2026.03.01 - v1.0.1
   - Add Ukrainian, Dutch, Basque languages
   - Select browser language and matching keyboard layout automatically
+  - Speak output banner text on click
 - 2026.02.24 - v1.0.0 - First release
 
 ## More Information
