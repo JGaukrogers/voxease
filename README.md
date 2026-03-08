@@ -49,8 +49,8 @@ A self-contained, offline-capable web application for augmentative and alternati
 ### Personalization
 
 - **Settings Persistence**: All preferences saved to browser localStorage
-- **Custom Phrases**: Add your own frequently-used phrases
-- **Export/Import**: Backup and restore settings and custom phrases
+- **Phrase Management**: Edit, reorder, and delete phrases via a dedicated Phrases modal
+- **Export/Import**: Backup and restore settings and phrase registry
 - **Input Method Preferences**: Enable/disable specific input methods
 - **UI Customization**: Adjust colors, speech rate, and interaction modes
 
@@ -78,14 +78,14 @@ A self-contained, offline-capable web application for augmentative and alternati
 - **A Button (Xbox) / X Button (PS)**: Activate selected phrase
 - **B Button (Xbox) / Circle (PS)**: Cancel/close modals
 
-### Adding Custom Phrases
+### Managing Phrases
 
-1. Open Settings
-2. Scroll to "Add Custom Phrase" section
-3. Enter your phrase text
-4. Optionally add an emoji/icon
-5. Click "Add Phrase"
-6. Your phrase appears in the main grid
+1. Click the "Phrases" button in the control bar
+2. The Phrases modal shows all phrases in an editable list
+3. Edit any phrase's text or icon
+4. Reorder phrases with the up/down arrow buttons
+5. Delete phrases with the trashbin button
+6. Add new phrases using the text and icon inputs at the bottom
 
 ### Export/Import Settings
 
@@ -102,6 +102,9 @@ USE AT YOUR OWN RISK. The developer assumes no liability for any consequences of
 
 ## Version history
 
+- 2026.03.08 - v1.0.4
+  - Add Phrases modal for editing, reordering, and deleting all phrases
+  - Add Norwegian language (thanks @FSjursaether)
 - 2026.03.01 - v1.0.3
   - Add Ukrainian, Dutch, Basque languages (thanks @nykula, @JayVisschedijk, @xezpeleta), Greek
   - Select browser language and matching keyboard layout automatically

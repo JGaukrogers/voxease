@@ -328,32 +328,95 @@
                 border-color: #444;
             }
 
-            #custom-phrase-input {
-                width: 100%;
+            .phrase-editor-list {
+                max-height: 50vh;
+                overflow-y: auto;
+                margin-bottom: 15px;
             }
 
-            .custom-phrase-item {
+            .phrase-editor-item {
                 display: flex;
                 align-items: center;
-                gap: 10px;
-                margin-top: 10px;
+                gap: 6px;
+                padding: 4px 0;
+                border-bottom: 1px solid #eee;
             }
 
-            .custom-phrase-item input {
+            body.dark .phrase-editor-item {
+                border-bottom-color: #444;
+            }
+
+            .phrase-editor-item .phrase-icon-input {
+                width: 40px;
+                flex-shrink: 0;
+            }
+
+            .phrase-editor-item input[type="text"] {
                 flex: 1;
+                padding: 6px 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
             }
 
-            .delete-btn {
-                background: #f44321;
-                color: white;
+            body.dark .phrase-editor-item input[type="text"] {
+                background: #333;
+                color: #e0e0e0;
+                border-color: #555;
+            }
+
+            .phrase-editor-item button {
+                padding: 4px 8px;
                 border: none;
-                padding: 8px 16px;
                 border-radius: 4px;
                 cursor: pointer;
+                font-size: 16px;
+                min-width: 32px;
+                min-height: 32px;
+                background: #e0e0e0;
             }
 
-            .delete-btn:hover {
+            .phrase-editor-item button:hover {
+                background: #ccc;
+            }
+
+            body.dark .phrase-editor-item button {
+                background: #444;
+                color: #e0e0e0;
+            }
+
+            body.dark .phrase-editor-item button:hover {
+                background: #555;
+            }
+
+            .phrase-editor-item .phrase-delete-btn {
+                background: #f44321;
+                color: white;
+            }
+
+            .phrase-editor-item .phrase-delete-btn:hover {
                 background: #d32f2f;
+            }
+
+            .phrase-editor-add {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                margin-bottom: 15px;
+            }
+
+            .phrase-editor-add input[type="text"] {
+                flex: 1;
+                padding: 8px 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+
+            body.dark .phrase-editor-add input[type="text"] {
+                background: #333;
+                color: #e0e0e0;
+                border-color: #555;
             }
 
             #keyboard-content {
@@ -515,7 +578,7 @@
                 display: none !important;
             }
 
-            #custom-phrase-icon {
+            .phrase-icon-input {
                 width: 44px;
                 min-width: 44px;
                 max-width: 44px;
@@ -636,6 +699,11 @@
                 class="btn"
                 id="settings-btn"
                 aria-label="Open settings"
+            ></button>
+            <button
+                class="btn"
+                id="phrases-btn"
+                aria-label="Open phrases editor"
             ></button>
             <button
                 class="btn secondary"
@@ -921,32 +989,6 @@
                 </div>
 
                 <div class="setting-group">
-                    <h3 id="custom-phrases-section"></h3>
-                    <div class="custom-phrase-item">
-                        <input
-                            type="text"
-                            id="custom-phrase-input"
-                            maxlength="100"
-                            aria-label="Enter custom phrase"
-                        />
-                        <input
-                            type="text"
-                            id="custom-phrase-icon"
-                            class="phrase-icon-input"
-                            maxlength="2"
-                            placeholder="📝"
-                            aria-label="Enter icon or emoji"
-                        />
-                        <button
-                            class="btn"
-                            id="add-phrase-btn"
-                            aria-label="Add custom phrase"
-                        ></button>
-                    </div>
-                    <div id="custom-phrases-list"></div>
-                </div>
-
-                <div class="setting-group">
                     <h3 id="import-export-section">Import/Export Settings</h3>
                     <div class="import-export-group">
                         <button
@@ -977,6 +1019,52 @@
                     class="btn"
                     id="close-settings"
                     aria-label="Close settings"
+                ></button>
+            </div>
+        </div>
+
+        <div
+            id="phrases-modal"
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="phrases-title"
+        >
+            <div class="modal-content">
+                <button
+                    class="modal-close"
+                    id="phrases-close-x"
+                    aria-label="Close phrases"
+                >
+                    &times;
+                </button>
+                <h2 id="phrases-title">Phrases</h2>
+                <div id="phrases-editor-list" class="phrase-editor-list"></div>
+                <div class="phrase-editor-add">
+                    <input
+                        type="text"
+                        id="phrases-add-text"
+                        maxlength="100"
+                        aria-label="Enter new phrase"
+                    />
+                    <input
+                        type="text"
+                        id="phrases-add-icon"
+                        class="phrase-icon-input"
+                        maxlength="2"
+                        placeholder="📝"
+                        aria-label="Enter icon or emoji"
+                    />
+                    <button
+                        class="btn"
+                        id="phrases-add-btn"
+                        aria-label="Add phrase"
+                    ></button>
+                </div>
+                <button
+                    class="btn"
+                    id="close-phrases"
+                    aria-label="Close phrases"
                 ></button>
             </div>
         </div>
@@ -1030,6 +1118,7 @@
             const STORAGE_SETTINGS_KEY = "VoxEaseSettings";
             const STORAGE_PHRASES_KEY = "VoxEaseCustomPhrases";
             const STORAGE_DISCLAIMER_KEY = "VoxEaseDisclaimerDismissed";
+            const STORAGE_REGISTRY_KEY = "VoxEasePhraseRegistry";
 
             // Language definitions
             const languages = {
@@ -1065,6 +1154,8 @@
                         clear: "🗑️ Clear",
                         speak: "🔊 Speak",
                         settingsTitle: "Settings",
+                        phrases: "💬 Phrases",
+                        phrasesTitle: "Phrases",
                         language: "Language",
                         selectLanguage: "Select Language",
                         display: "Display",
@@ -1136,6 +1227,8 @@
                         clear: "🗑️ Cancella",
                         speak: "🔊 Parla",
                         settingsTitle: "Impostazioni",
+                        phrases: "💬 Frasi",
+                        phrasesTitle: "Frasi",
                         language: "Lingua",
                         selectLanguage: "Seleziona Lingua",
                         display: "Visualizzazione",
@@ -1206,6 +1299,8 @@
                         clear: "🗑️ Borrar",
                         speak: "🔊 Hablar",
                         settingsTitle: "Ajustes",
+                        phrases: "💬 Frases",
+                        phrasesTitle: "Frases",
                         language: "Idioma",
                         selectLanguage: "Seleccionar Idioma",
                         display: "Visualización",
@@ -1277,6 +1372,8 @@
                         clear: "🗑️ Löschen",
                         speak: "🔊 Sprechen",
                         settingsTitle: "Einstellungen",
+                        phrases: "💬 Sätze",
+                        phrasesTitle: "Sätze",
                         language: "Sprache",
                         selectLanguage: "Sprache wählen",
                         display: "Anzeige",
@@ -1348,6 +1445,8 @@
                         clear: "🗑️ Effacer",
                         speak: "🔊 Parler",
                         settingsTitle: "Paramètres",
+                        phrases: "💬 Phrases",
+                        phrasesTitle: "Phrases",
                         language: "Langue",
                         selectLanguage: "Sélectionner la langue",
                         display: "Affichage",
@@ -1418,6 +1517,8 @@
                         clear: "🗑️ Очистити",
                         speak: "🔊 Озвучувати",
                         settingsTitle: "Параметри",
+                        phrases: "💬 Фрази",
+                        phrasesTitle: "Фрази",
                         language: "Мова",
                         selectLanguage: "Вибрати мову",
                         display: "Оформлення",
@@ -1488,6 +1589,8 @@
                         clear: "🗑️ Wissen",
                         speak: "🔊 Spreken",
                         settingsTitle: "Instellingen",
+                        phrases: "💬 Zinnen",
+                        phrasesTitle: "Zinnen",
                         language: "Taal",
                         selectLanguage: "Taal Selecteren",
                         display: "Weergave",
@@ -1558,6 +1661,8 @@
                         clear: "🗑️ Garbitu",
                         speak: "🔊 Esan",
                         settingsTitle: "Ezarpenak",
+                        phrases: "💬 Esaldiak",
+                        phrasesTitle: "Esaldiak",
                         language: "Hizkuntza",
                         selectLanguage: "Hizkuntza hautatu",
                         display: "Bistaratzea",
@@ -1632,6 +1737,8 @@
                         clear: "🗑️ Εκκαθάριση",
                         speak: "🔊 Ομιλία",
                         settingsTitle: "Ρυθμίσεις",
+                        phrases: "💬 Φράσεις",
+                        phrasesTitle: "Φράσεις",
                         language: "Γλώσσα",
                         selectLanguage: "Επιλογή γλώσσας",
                         display: "Εμφάνιση",
@@ -1788,7 +1895,7 @@
             const keyboardLayout = language == "uk" ? "jcuken" : "qwerty";
             const state = {
                 phrases: [],
-                customPhrases: [],
+                phraseRegistry: [],
                 selectedIndex: 0,
                 keyboardSelectedIndex: 0,
                 keyboardTotalItems: 0,
@@ -1990,30 +2097,142 @@
                 }
             }
 
-            function saveCustomPhrases() {
+            function savePhraseRegistry() {
                 try {
                     localStorage.setItem(
-                        STORAGE_PHRASES_KEY,
-                        JSON.stringify(state.customPhrases),
+                        STORAGE_REGISTRY_KEY,
+                        JSON.stringify(state.phraseRegistry),
                     );
                 } catch (e) {
-                    console.error("Failed to save custom phrases:", e);
+                    console.error("Failed to save phrase registry:", e);
                     showError(
-                        "Failed to save custom phrases. Storage may be full.",
+                        "Failed to save phrases. Storage may be full.",
                     );
                 }
             }
 
-            function loadCustomPhrases() {
+            function loadPhraseRegistry() {
                 try {
-                    const saved = localStorage.getItem(STORAGE_PHRASES_KEY);
+                    const saved = localStorage.getItem(STORAGE_REGISTRY_KEY);
                     if (saved) {
-                        state.customPhrases = JSON.parse(saved);
+                        state.phraseRegistry = JSON.parse(saved);
+                        return true;
                     }
                 } catch (e) {
-                    console.error("Failed to load custom phrases:", e);
-                    showError("Failed to load custom phrases.");
+                    console.error("Failed to load phrase registry:", e);
+                    showError("Failed to load phrases.");
                 }
+                return false;
+            }
+
+            function initPhraseRegistry() {
+                if (loadPhraseRegistry()) return;
+
+                const lang = languages[state.settings.language];
+                state.phraseRegistry = lang.phrases.map((p, i) => ({
+                    text: p.text,
+                    icon: p.icon,
+                    isDefault: true,
+                    defaultIndex: i,
+                }));
+
+                // Migrate old custom phrases
+                try {
+                    const oldCustom = localStorage.getItem(STORAGE_PHRASES_KEY);
+                    if (oldCustom) {
+                        const customs = JSON.parse(oldCustom);
+                        customs.forEach((p) => {
+                            const text = typeof p === "string" ? p : p.text;
+                            const icon =
+                                typeof p === "object" && p.icon
+                                    ? p.icon
+                                    : "📝";
+                            state.phraseRegistry.push({
+                                text,
+                                icon,
+                                isDefault: false,
+                            });
+                        });
+                        localStorage.removeItem(STORAGE_PHRASES_KEY);
+                    }
+                } catch (e) {
+                    console.error("Failed to migrate custom phrases:", e);
+                }
+
+                savePhraseRegistry();
+            }
+
+            function updateRegistryLanguage() {
+                const lang = languages[state.settings.language];
+                state.phraseRegistry.forEach((entry) => {
+                    if (
+                        entry.isDefault &&
+                        entry.defaultIndex !== undefined &&
+                        lang.phrases[entry.defaultIndex]
+                    ) {
+                        entry.text = lang.phrases[entry.defaultIndex].text;
+                        entry.icon = lang.phrases[entry.defaultIndex].icon;
+                    }
+                });
+                savePhraseRegistry();
+            }
+
+            function addPhraseToRegistry(text, icon) {
+                state.phraseRegistry.push({
+                    text,
+                    icon: icon || "📝",
+                    isDefault: false,
+                });
+                savePhraseRegistry();
+                updatePhrases();
+                renderPhrases();
+            }
+
+            function deletePhraseFromRegistry(index) {
+                state.phraseRegistry.splice(index, 1);
+                savePhraseRegistry();
+                updatePhrases();
+                renderPhrases();
+            }
+
+            function editPhraseText(index, newText) {
+                state.phraseRegistry[index].text = newText;
+                state.phraseRegistry[index].isDefault = false;
+                delete state.phraseRegistry[index].defaultIndex;
+                savePhraseRegistry();
+                updatePhrases();
+                renderPhrases();
+            }
+
+            function editPhraseIcon(index, newIcon) {
+                state.phraseRegistry[index].icon = newIcon;
+                state.phraseRegistry[index].isDefault = false;
+                delete state.phraseRegistry[index].defaultIndex;
+                savePhraseRegistry();
+                updatePhrases();
+                renderPhrases();
+            }
+
+            function movePhraseUp(index) {
+                if (index <= 0) return;
+                const temp = state.phraseRegistry[index];
+                state.phraseRegistry[index] =
+                    state.phraseRegistry[index - 1];
+                state.phraseRegistry[index - 1] = temp;
+                savePhraseRegistry();
+                updatePhrases();
+                renderPhrases();
+            }
+
+            function movePhraseDown(index) {
+                if (index >= state.phraseRegistry.length - 1) return;
+                const temp = state.phraseRegistry[index];
+                state.phraseRegistry[index] =
+                    state.phraseRegistry[index + 1];
+                state.phraseRegistry[index + 1] = temp;
+                savePhraseRegistry();
+                updatePhrases();
+                renderPhrases();
             }
 
             function updatePrompt() {
@@ -2025,8 +2244,10 @@
             function updatePhrases() {
                 const lang = languages[state.settings.language];
                 state.phrases = [
-                    ...lang.phrases,
-                    ...state.customPhrases,
+                    ...state.phraseRegistry.map((e) => ({
+                        text: e.text,
+                        icon: e.icon,
+                    })),
                     lang.typeMessage,
                 ];
             }
@@ -2274,6 +2495,9 @@
                 const settingsOpen = document
                     .getElementById("settings-modal")
                     .classList.contains("active");
+                const phrasesOpen = document
+                    .getElementById("phrases-modal")
+                    .classList.contains("active");
                 const keyboardOpen = document
                     .getElementById("keyboard-modal")
                     .classList.contains("active");
@@ -2283,6 +2507,8 @@
                     e.preventDefault();
                     if (settingsOpen) {
                         closeSettings();
+                    } else if (phrasesOpen) {
+                        closePhrases();
                     } else if (keyboardOpen) {
                         closeKeyboard();
                     }
@@ -2290,6 +2516,7 @@
                 }
 
                 if (settingsOpen) return;
+                if (phrasesOpen) return;
 
                 // Physical keyboard when keyboard modal is open
                 if (keyboardOpen) {
@@ -2958,8 +3185,6 @@
                     state.settings.invertHorizontal;
                 document.getElementById("keyboard-layout").value =
                     state.settings.keyboardLayout;
-
-                renderCustomPhrasesList();
             }
 
             function updateUILanguage() {
@@ -2967,6 +3192,8 @@
 
                 document.getElementById("settings-btn").textContent =
                     lang.ui.settings;
+                document.getElementById("phrases-btn").textContent =
+                    lang.ui.phrases;
                 document.getElementById("clear-btn").textContent =
                     lang.ui.clear;
                 updateSpeakButton();
@@ -3021,13 +3248,15 @@
                 ).textContent = lang.ui.virtualKeyboard;
                 document.getElementById("keyboard-layout-label").textContent =
                     lang.ui.keyboardLayout;
-                document.getElementById("custom-phrases-section").textContent =
-                    lang.ui.customPhrases;
-                document.getElementById("custom-phrase-input").placeholder =
-                    lang.ui.enterCustomPhrase;
-                document.getElementById("add-phrase-btn").textContent =
-                    lang.ui.add;
                 document.getElementById("close-settings").textContent =
+                    lang.ui.close;
+                document.getElementById("phrases-title").textContent =
+                    lang.ui.phrasesTitle;
+                document.getElementById("phrases-add-text").placeholder =
+                    lang.ui.enterCustomPhrase;
+                document.getElementById("phrases-add-btn").textContent =
+                    lang.ui.add;
+                document.getElementById("close-phrases").textContent =
                     lang.ui.close;
                 document.getElementById("import-export-section").textContent =
                     lang.ui.importExport;
@@ -3061,6 +3290,92 @@
                     .classList.remove("active");
             }
 
+            function openPhrases() {
+                document
+                    .getElementById("phrases-modal")
+                    .classList.add("active");
+                renderPhrasesList();
+            }
+
+            function closePhrases() {
+                document
+                    .getElementById("phrases-modal")
+                    .classList.remove("active");
+            }
+
+            function renderPhrasesList() {
+                const list = document.getElementById("phrases-editor-list");
+                const lang = languages[state.settings.language];
+                list.innerHTML = "";
+
+                state.phraseRegistry.forEach((entry, index) => {
+                    const row = document.createElement("div");
+                    row.className = "phrase-editor-item";
+
+                    const iconInput = document.createElement("input");
+                    iconInput.type = "text";
+                    iconInput.className = "phrase-icon-input";
+                    iconInput.maxLength = 2;
+                    iconInput.value = entry.icon || "";
+                    iconInput.setAttribute("aria-label", "Phrase icon");
+                    iconInput.addEventListener("change", () => {
+                        editPhraseIcon(index, iconInput.value.trim());
+                        renderPhrasesList();
+                    });
+
+                    const textInput = document.createElement("input");
+                    textInput.type = "text";
+                    textInput.maxLength = MAX_PHRASE_LENGTH;
+                    textInput.value = entry.text;
+                    textInput.setAttribute("aria-label", "Phrase text");
+                    textInput.addEventListener("change", () => {
+                        const val = textInput.value.trim();
+                        if (val) {
+                            editPhraseText(index, val);
+                            renderPhrasesList();
+                        }
+                    });
+
+                    const upBtn = document.createElement("button");
+                    upBtn.textContent = "\u2B06\uFE0F";
+                    upBtn.title = "Move up";
+                    upBtn.setAttribute("aria-label", "Move phrase up");
+                    upBtn.addEventListener("click", () => {
+                        movePhraseUp(index);
+                        renderPhrasesList();
+                    });
+
+                    const downBtn = document.createElement("button");
+                    downBtn.textContent = "\u2B07\uFE0F";
+                    downBtn.title = "Move down";
+                    downBtn.setAttribute("aria-label", "Move phrase down");
+                    downBtn.addEventListener("click", () => {
+                        movePhraseDown(index);
+                        renderPhrasesList();
+                    });
+
+                    const delBtn = document.createElement("button");
+                    delBtn.className = "phrase-delete-btn";
+                    delBtn.textContent = "\uD83D\uDDD1\uFE0F";
+                    delBtn.title = lang.ui.delete;
+                    delBtn.setAttribute(
+                        "aria-label",
+                        `Delete phrase: ${entry.text}`,
+                    );
+                    delBtn.addEventListener("click", () => {
+                        deletePhraseFromRegistry(index);
+                        renderPhrasesList();
+                    });
+
+                    row.appendChild(iconInput);
+                    row.appendChild(textInput);
+                    row.appendChild(upBtn);
+                    row.appendChild(downBtn);
+                    row.appendChild(delBtn);
+                    list.appendChild(row);
+                });
+            }
+
             function applySettings() {
                 document.body.classList.toggle("dark", state.settings.darkMode);
                 document
@@ -3081,6 +3396,7 @@
                 saveSettings();
 
                 if (key === "language") {
+                    updateRegistryLanguage();
                     updatePrompt();
                     updatePhrases();
                     renderPhrases();
@@ -3093,112 +3409,12 @@
                 }
             }
 
-            // Custom phrases with input validation
-            function addCustomPhrase() {
-                const input = document.getElementById("custom-phrase-input");
-                const iconInput = document.getElementById("custom-phrase-icon");
-                const phrase = input.value.trim();
-                const icon = iconInput.value.trim();
-
-                if (!phrase) {
-                    showError("Please enter a phrase");
-                    return;
-                }
-
-                if (phrase.length > MAX_PHRASE_LENGTH) {
-                    showError(
-                        `Phrase too long (max ${MAX_PHRASE_LENGTH} characters)`,
-                    );
-                    return;
-                }
-
-                const phraseObj = { text: phrase, icon: icon || "📝" };
-
-                const exists = state.customPhrases.some(
-                    (p) =>
-                        (typeof p === "string" && p === phrase) ||
-                        (typeof p === "object" && p.text === phrase),
-                );
-
-                if (exists) {
-                    showError("Phrase already exists");
-                    return;
-                }
-
-                state.customPhrases.push(phraseObj);
-                updatePhrases();
-                saveCustomPhrases();
-                renderPhrases();
-                renderCustomPhrasesList();
-                input.value = "";
-                iconInput.value = "";
-                playSound("select-sound");
-            }
-
-            function deleteCustomPhrase(phrase) {
-                const phraseText =
-                    typeof phrase === "string" ? phrase : phrase.text;
-                const index = state.customPhrases.findIndex(
-                    (p) =>
-                        (typeof p === "string" && p === phraseText) ||
-                        (typeof p === "object" && p.text === phraseText),
-                );
-
-                if (index > -1) {
-                    state.customPhrases.splice(index, 1);
-                    updatePhrases();
-                    saveCustomPhrases();
-                    renderPhrases();
-                    renderCustomPhrasesList();
-                    playSound("select-sound");
-                }
-            }
-
-            function renderCustomPhrasesList() {
-                const list = document.getElementById("custom-phrases-list");
-                const lang = languages[state.settings.language];
-                list.innerHTML = "";
-
-                state.customPhrases.forEach((phrase) => {
-                    const phraseText =
-                        typeof phrase === "string" ? phrase : phrase.text;
-                    const phraseIcon =
-                        typeof phrase === "object" && phrase.icon
-                            ? phrase.icon
-                            : "";
-
-                    const div = document.createElement("div");
-                    div.className = "custom-phrase-item";
-
-                    const input = document.createElement("input");
-                    input.type = "text";
-                    input.value =
-                        (phraseIcon ? phraseIcon + " " : "") + phraseText;
-                    input.readOnly = true;
-
-                    const deleteBtn = document.createElement("button");
-                    deleteBtn.className = "delete-btn";
-                    deleteBtn.textContent = lang.ui.delete;
-                    deleteBtn.setAttribute(
-                        "aria-label",
-                        `Delete phrase: ${phraseText}`,
-                    );
-                    deleteBtn.addEventListener("click", () =>
-                        deleteCustomPhrase(phrase),
-                    );
-
-                    div.appendChild(input);
-                    div.appendChild(deleteBtn);
-                    list.appendChild(div);
-                });
-            }
-
             // Export/import settings
             function exportSettings() {
                 try {
                     const data = {
                         settings: state.settings,
-                        customPhrases: state.customPhrases,
+                        phraseRegistry: state.phraseRegistry,
                         version: "1.0",
                         exportDate: new Date().toISOString(),
                     };
@@ -3243,9 +3459,34 @@
                             saveSettings();
                         }
 
-                        if (data.customPhrases) {
-                            state.customPhrases = data.customPhrases;
-                            saveCustomPhrases();
+                        if (data.phraseRegistry) {
+                            state.phraseRegistry = data.phraseRegistry;
+                            savePhraseRegistry();
+                        } else if (data.customPhrases) {
+                            // Legacy import: rebuild registry from defaults + custom
+                            const lang = languages[state.settings.language];
+                            state.phraseRegistry = lang.phrases.map(
+                                (p, i) => ({
+                                    text: p.text,
+                                    icon: p.icon,
+                                    isDefault: true,
+                                    defaultIndex: i,
+                                }),
+                            );
+                            data.customPhrases.forEach((p) => {
+                                const text =
+                                    typeof p === "string" ? p : p.text;
+                                const icon =
+                                    typeof p === "object" && p.icon
+                                        ? p.icon
+                                        : "📝";
+                                state.phraseRegistry.push({
+                                    text,
+                                    icon,
+                                    isDefault: false,
+                                });
+                            });
+                            savePhraseRegistry();
                         }
 
                         updatePrompt();
@@ -3460,12 +3701,49 @@
                     });
 
                 document
-                    .getElementById("add-phrase-btn")
-                    .addEventListener("click", addCustomPhrase);
+                    .getElementById("phrases-btn")
+                    .addEventListener("click", openPhrases);
                 document
-                    .getElementById("custom-phrase-input")
+                    .getElementById("close-phrases")
+                    .addEventListener("click", closePhrases);
+                document
+                    .getElementById("phrases-close-x")
+                    .addEventListener("click", closePhrases);
+                document
+                    .getElementById("phrases-modal")
+                    .addEventListener("click", (e) => {
+                        if (e.target.id === "phrases-modal") closePhrases();
+                    });
+                document
+                    .getElementById("phrases-add-btn")
+                    .addEventListener("click", () => {
+                        const textInput =
+                            document.getElementById("phrases-add-text");
+                        const iconInput =
+                            document.getElementById("phrases-add-icon");
+                        const text = textInput.value.trim();
+                        const icon = iconInput.value.trim();
+                        if (!text) return;
+                        if (text.length > MAX_PHRASE_LENGTH) {
+                            showError(
+                                `Phrase too long (max ${MAX_PHRASE_LENGTH} characters)`,
+                            );
+                            return;
+                        }
+                        addPhraseToRegistry(text, icon);
+                        renderPhrasesList();
+                        textInput.value = "";
+                        iconInput.value = "";
+                        playSound("select-sound");
+                    });
+                document
+                    .getElementById("phrases-add-text")
                     .addEventListener("keypress", (e) => {
-                        if (e.key === "Enter") addCustomPhrase();
+                        if (e.key === "Enter") {
+                            document
+                                .getElementById("phrases-add-btn")
+                                .click();
+                        }
                     });
 
                 document
@@ -3499,7 +3777,7 @@
 
             function init() {
                 loadSettings();
-                loadCustomPhrases();
+                initPhraseRegistry();
                 if (localStorage.getItem(STORAGE_DISCLAIMER_KEY)) {
                     document
                         .getElementById("disclaimer")
