@@ -21,6 +21,7 @@ A self-contained, offline-capable web application for augmentative and alternati
   - Basque (Euskara)
   - Greek (Ελληνικά)
   - Norwegian (Norsk)
+  - Catalan (Català)
 
 ### Input Methods
 
